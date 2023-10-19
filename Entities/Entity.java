@@ -25,7 +25,6 @@ public class Entity {
     }
 
     //Getters and Setters
-    
     public int getX() {
         return x;
     }
