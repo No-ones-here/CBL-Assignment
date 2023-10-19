@@ -4,6 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Launcher.Handler;
 
+/**
+ * Handles Mouse Events
+ * 
+ * @author Luis Santos
+ * @id 1998544
+ */
 public class MouseHandler implements ActionListener{
 
     private Handler handler;

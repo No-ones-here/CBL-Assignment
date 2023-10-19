@@ -1,7 +1,12 @@
 package Entities;
 
 import java.awt.Image;
-
+/**
+ * Abstract Object that describes an Entity in the Game.
+ * 
+ * @author Luis Santos
+ * @id 1998544
+ */
 public class Entity {
     private int x;
     private int y;

@@ -1,5 +1,11 @@
 package Entities;
 
+/**
+ * Abstract Object that represents the Player in the program.
+ * 
+ * @author Luis Santos
+ * @id 1998544
+ */
 public class Player extends Entity{
     private boolean wheelieState;
 

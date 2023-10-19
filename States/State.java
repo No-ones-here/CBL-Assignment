@@ -1,5 +1,11 @@
 package States;
 
+/**
+ * Abstract representation of a State of the game.
+ * 
+ * @author Luis Santos
+ * @id 1998544
+ */
 public abstract class State {
     private static State currentState = null;
     public static State getCurrentState() {
