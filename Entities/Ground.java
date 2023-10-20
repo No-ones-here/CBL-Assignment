@@ -8,9 +8,11 @@ import javax.swing.ImageIcon;
  * @id 1998544
  */
 public class Ground extends Entity{
-    
+    private int stepSize;
+
     public Ground() {
         super();
+        this.stepSize = 0;
     }
     
     public Ground(int x, int y, ImageIcon sprite) {
@@ -21,10 +23,13 @@ public class Ground extends Entity{
 
     /**
      * Increments the x coordinate of the ground by the stepSize.
-     * 
-     * @param stepSize int that stores the size of the each step
      */
-    public void step(int stepSize) {
+    public void step() {
         super.setX(super.getX() + stepSize);
+    }
+
+    //Getters and Setters
+    public void setStepSize(int stepSize) {
+        this.stepSize = stepSize;
     }
 }
