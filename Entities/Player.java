@@ -1,5 +1,7 @@
 package Entities;
 
+import javax.swing.ImageIcon;
+
 /**
  * Abstract Object that represents the Player in the program.
  * 
@@ -13,7 +15,11 @@ public class Player extends Entity{
         super();
     }
 
-
+    public Player(int initialX, int initialY, ImageIcon sprite) {
+        super(sprite.getIconWidth(), sprite.getIconHeight(), sprite, true);
+        super.setX(initialX);
+        super.setY(initialY);
+    }
     
     //Getters and Setters
     public boolean isWheelieState() {
