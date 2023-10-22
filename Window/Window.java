@@ -7,7 +7,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Window {
-    
+    private int width;
+    private int height;
+    private String title;
+
+    public Window(int width, int height, String title) {
+        this.width = width;
+        this.height = height;
+        this.title = title;
+    }
  
     public void createWindow() {
         
@@ -90,6 +98,6 @@ public class Window {
     }
 
     public static void main(String[] args) {
-        new Window().runGraph();
+        new Window(800, 600, "Wheelie it up!").runGraph();
     }
 }

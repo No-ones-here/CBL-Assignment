@@ -1,6 +1,6 @@
 package Entities;
 
-import java.awt.Image;
+import javax.swing.ImageIcon;
 /**
  * Abstract Object that describes an Entity in the Game.
  * 
@@ -12,16 +12,18 @@ public class Entity {
     private int y;
     private int xSize;
     private int ySize;
-    private Image sprite;
+    private ImageIcon sprite;
+    private boolean collidable;
 
     public Entity() {
-        this(0, 0, null);
+        this(0, 0, null, false);
     }
 
-    public Entity(int xSize, int ySize, Image sprite) {
+    public Entity(int xSize, int ySize, ImageIcon sprite, boolean collidable) {
         this.xSize = xSize;
         this.ySize = ySize;
         this.sprite = sprite;
+        this.collidable = collidable;
     }
 
     @Override
@@ -54,7 +56,14 @@ public class Entity {
         return ySize;
     }
 
-    public Image getSprite() {
+    public ImageIcon getSprite() {
         return sprite;
+    }
+    protected void setSprite(ImageIcon sprite) {
+        this.sprite = sprite;
+    } 
+
+    public boolean collidable() {
+        return this.collidable;
     }
 }
