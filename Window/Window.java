@@ -4,43 +4,67 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+
 
 public class Window {
+    Animation anim = new Animation() 
+    // Frame
+    JFrame frame = new JFrame("Wheelie it up!");
+
+    // Buttons
+    JButton wheelie = new JButton("Wheelie", null);
+    JButton jump = new JButton("jump", null);
     
+ 
+    // Labels
+    JLabel pilotlabel = new JLabel(anim.getimg().getpilot());
+    JLabel roadlabel = new JLabel(road);
+    JLabel roadlabel2 = new JLabel(road2); 
+    JLabel backgroundlabel = new JLabel(background);
+    JLabel instructions = new JLabel("Press: W to wheelie " + "or J to jump");
+
    
-    public void createWindow() {
-        
+    public Window() {
+    }
+    
+    // Getters for buttons
+    public JButton getwheelie() {
+        return this.wheelie;
+    }
+
+    public JButton getjump() {
+        return this.jump;
     }
 
     
+    // Getters for labels
+    public JLabel getpilotlabel() {
+        return this.pilotlabel;
+    }
+
+    public JLabel getroadlabel() {
+        return this.roadlabel;
+    }
+
+    public JLabel getroadlabel2() {
+        return this.roadlabel2;
+    }
+
+    public JLabel getbackgroundlabel() {
+        return this.backgroundlabel;
+    }
+    
+
 
     public void runGraph() {
         
-        // Frame
-        JFrame frame = new JFrame("Wheelie it up!");
-
-        // Buttons
-        JButton wheelie = new JButton("Wheelie", null);
-        JButton jump = new JButton("jump", null);
+       
         
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
 
-        // Imported images and sprite
-        ImageIcon background = new ImageIcon("\\Users\\20233231\\Pictures\\Saved Pictures\\OOWbackground3.jpg");
-        ImageIcon road = new ImageIcon("\\Users\\20233231\\Pictures\\Saved Pictures\\OOWroad2.jpg");
-        ImageIcon road2 = new ImageIcon("\\Users\\20233231\\Pictures\\Saved Pictures\\OOWroad2.jpg");
-        ImageIcon pilot = new ImageIcon("\\Users\\20233231\\Pictures\\Saved Pictures\\daniel.png");
         
-        // Labels
-        JLabel pilotlabel = new JLabel(pilot);
-        JLabel roadlabel = new JLabel(road);
-        JLabel roadlabel2 = new JLabel(road2); 
-        JLabel backgroundlabel = new JLabel(background);
-        JLabel instructions = new JLabel("Press: W to wheelie" + "\n J to jump");
-
         roadlabel2.setLocation(road.getIconWidth(), 200 + background.getIconHeight());
 
         // Animation: looping the road
