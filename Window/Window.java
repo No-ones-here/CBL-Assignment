@@ -116,6 +116,6 @@ public class Window {
     }
     
     public static void main(String[] args) {
-        new Window().runGraph();
+        new Window(800, 600, "Wheelie it up!").runGraph();
     }
 }
