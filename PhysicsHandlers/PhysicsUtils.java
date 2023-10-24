@@ -9,7 +9,7 @@ import Entities.Entity;
  * @id 1998544
  */
 public class PhysicsUtils {
-    public static final int GRAVITY = 10;
+    public static final int GRAVITY = -10;
     
     public PhysicsUtils() {
         
