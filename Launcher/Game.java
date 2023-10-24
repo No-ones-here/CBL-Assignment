@@ -53,6 +53,7 @@ public class Game {
     }
 
     public void run() {
+
         double delta = 0;
         int fps = 60;
         double timePerTick = 1000000000 / fps;
@@ -63,6 +64,7 @@ public class Game {
         running = true;
 
         while (running) {
+
             now = System.nanoTime();
             delta += (now - lastTime) / timePerTick;
             timer += (now - lastTime);
@@ -70,12 +72,14 @@ public class Game {
 
             if (delta >= 1) {
                 tick();
-                delta--;
                 ticks++;
+                delta--;
             }
 
-            if (timer >= 10000000) {
+            if (timer >= 1000000000) {
                 System.out.println("Ticks: " + ticks);
+                ticks = 0;
+                timer = 0;
             }
 
         }
