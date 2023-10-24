@@ -1,6 +1,9 @@
 package Launcher;
-import Window.*;
-import InputHandlers.*;
+
+import InputHandlers.KeyHandler;
+import InputHandlers.MouseHandler;
+import Window.Window;
+import World.World;
 
 /**
  * Handler through which objects in the Game class are accessed by other classes.
@@ -33,5 +36,11 @@ public class Handler {
     }
     public void setState(int i) {
         game.setState(i);
+    }
+    public World getWorld() {
+        return game.getWorld();
+    }
+    public void setWorld(World world) {
+        game.setWorld(world);
     }
 }
