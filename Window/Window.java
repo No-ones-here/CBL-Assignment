@@ -17,7 +17,7 @@ public class Window {
     String title;
 
     //Animation
-    Animation anim = new Animation(this);
+    Animation anim;
 
     //World
     World world;
@@ -40,27 +40,33 @@ public class Window {
     // JLabel bgmenulabel = new JLabel(anim.getimg().getBgMenu());
     
 
-    // Constructor method
+    /**
+     * Constructor method that initializes initial variables.
+     * 
+     * @param width describes initial width of window
+     * @param height describes initial height of window
+     * @param title describes title of window
+     */
     public Window(int width, int height, String title) {
         this.width = width;
         this.height = height;
         this.title = title;
+        this.anim = new Animation(this);
     }
 
+    /**
+     * Runs GUI when gameplay is running.
+     */
     public void runGame() {
         world = handler.getWorld();
+        anim.setWorld(world);
 
         JFrame frame = new JFrame("Wheelie it up!");
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
 
-        
-        roadlabel2.setLocation(anim.getimg().getroad().getIconWidth(), 200 + anim.getimg().getbackground().getIconHeight());
 
-        // Looping the road
-        anim.runAnimation();
-       
         // Adding components to the frame
         //Player Object 
         pilotlabel = new JLabel(world.getPlayer().getSprite());
@@ -79,16 +85,20 @@ public class Window {
         frame.add(jump, BorderLayout.NORTH);
 
         //Background
-        backgroundlabel = new JLabel(anim.getimg().getbackground());
+        backgroundlabel = new JLabel(world.getBackground().getSprite());
         frame.add(backgroundlabel);
 
         //First instance of road
-        roadlabel  = new JLabel(anim.getimg().getroad());;
+        roadlabel  = new JLabel(world.getG1().getSprite());
         frame.add(roadlabel);
 
         //Second instance of road
-        roadlabel2 = new JLabel(anim.getimg().getroad());
+        roadlabel2 = new JLabel(world.getG2().getSprite());
+        roadlabel2.setLocation(roadlabel2.getWidth(), 200 + world.getBackground().getySize());
         frame.add(roadlabel2);
+
+        // Looping the road
+        anim.runAnimation();
 
         frame.getContentPane().setBackground(Color.ORANGE);
         frame.setVisible(true);

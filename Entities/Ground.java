@@ -9,18 +9,31 @@ import javax.swing.ImageIcon;
  * @author Luis Santos
  * @id 1998544
  */
-public class Ground extends Entity{
+public class Ground extends Entity {
     private int stepSize;
+    private int initialX;
 
+    /**
+     * Default constructor method without input variables.
+     */
     public Ground() {
         super();
         this.stepSize = 0;
     }
     
+    /**
+     * Constructor method that initializes the variables of the class.
+     * 
+     * @param x describes initial x coordinates of road
+     * @param y describes y coordinates of road
+     * @param sprite image that represents road on the GUI
+     * @param handler object that grants access to variables in Game
+     */
     public Ground(int x, int y, ImageIcon sprite, Handler handler) {
         super(sprite, true, handler);
         super.setX(x);
         super.setY(y);
+        this.initialX = x;
     }
 
     /**
@@ -38,8 +51,12 @@ public class Ground extends Entity{
     
     @Override
     public void stepX() {
-        
-        
+        if (x == 0) {
+            x = initialX;
+            x = (x - 5) % xSize;
+        } else {
+            x = (x - 5) % xSize;
+        }
     }
 
     @Override

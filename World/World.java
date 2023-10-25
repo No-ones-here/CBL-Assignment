@@ -28,15 +28,16 @@ public class World {
      * Constructor method that initializes all instances of the entities
      * existing in the world.
      * 
+     * @param handler object that allows access to variable in Game.
      */
     public World(Handler handler) {
-        //TODO: Implement Images!!!
         this.images = new Images();
+        this.bg = new Background(0, 200, images.getbackground());
         this.player = new Player(50, 250, images.getpilot(), handler);
-        this.g1 = new Ground(0, 300, images.getroad(), handler);
-        this.g2 = new Ground(g1.getxSize(), 300, images.getroad(), handler);
+        this.g1 = new Ground(0, bg.getY() + bg.getySize(), images.getroad(), handler);
+        this.g2 = new Ground(g1.getxSize(), bg.getY() + bg.getySize(), images.getroad(), handler);
         this.obsList = new ObstacleList(handler);
-        this.bg = new Background();
+        
     }
 
 
@@ -55,6 +56,10 @@ public class World {
 
     public Obstacle getNextObstacle() {
         return obsList.getNextObstacle();
-    }    
+    }
+
+    public Background getBackground() {
+        return this.bg;
+    }
     
 }
