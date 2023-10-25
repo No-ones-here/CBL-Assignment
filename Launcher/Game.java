@@ -29,30 +29,34 @@ public class Game {
     private boolean running;
     
     /**
-     * Constructor method that initializes all objects to be used in the game.s
+     * Constructor method that initializes all objects to be used in the game.
      */
     public Game() {
-        width = 900;
-        height = 900 / 12 * 9;
-        title = "Object-Oriented Wheelies";
+        title = "Wheelie it Up!";
 
-        
+        //Handler
+        handler = new Handler(this);
 
         //GUIs
         window = new Window(width, height, title);
         mH = new MouseHandler(handler);
         kH = new KeyHandler(handler);
 
-        //Handler
-        handler = new Handler(this);
-
         //States
         gameState = new GameState(handler);
-        menuState = new MenuState();
+        menuState = new MenuState(handler);
         
+        //Set Handler in Window
+        window.setHandler(handler);
     }
 
     public void run() {
+
+        if (State.getCurrentState() == null) {
+            State.setCurrentState(gameState);
+        }
+
+        State.getCurrentState().render();
 
         double delta = 0;
         int fps = 60;
@@ -88,14 +92,10 @@ public class Game {
         
 
     private void tick() {
-        if (State.getCurrentState() == null) {
-            State.setCurrentState(gameState);
-        }
-
         if (State.getCurrentState() == gameState) {
-            gameState.run();
+            gameState.tick();
         } else if (State.getCurrentState() == menuState) { 
-            menuState.run();
+            menuState.tick();
         }
     }
 
