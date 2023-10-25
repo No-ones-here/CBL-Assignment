@@ -1,17 +1,19 @@
 package Window;
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Imports Images into the Program
+ * 
+ * @author Daniele Guggino
+ * @id 
+ */
 public class Images {
     
-    ImageIcon background = new ImageIcon("\\Users\\20233231\\Visual Studio\\projects\\CBL-Assignment\\bg.jpg");
-    ImageIcon road = new ImageIcon("\\Users\\20233231\\Visual Studio\\projects\\CBL-Assignment\\road.jpg");
-    ImageIcon road2 = new ImageIcon("\\Users\\20233231\\Visual Studio\\projects\\CBL-Assignment\\road.jpg");
-    ImageIcon pilot = new ImageIcon("\\Users\\20233231\\Visual Studio\\projects\\CBL-Assignment\\daniel.png");
+    ImageIcon background = new ImageIcon("./bg.jpg");
+    ImageIcon road = new ImageIcon("./road.jpg");
+    ImageIcon road2 = new ImageIcon("./road.jpg");
+    ImageIcon pilot = new ImageIcon("./daniel.png");
 
     public Images() {
 
@@ -23,10 +25,6 @@ public class Images {
 
     public ImageIcon getroad() {
         return this.road;
-    }
-
-    public ImageIcon getroad2() {
-        return this.road2;
     }
 
     public ImageIcon getpilot() {

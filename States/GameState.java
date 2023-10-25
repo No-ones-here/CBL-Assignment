@@ -1,9 +1,6 @@
 package States;
 
-import Entities.Ground;
-import Entities.Player;
 import Launcher.Handler;
-import ObstacleHandler.ObstacleList;
 import World.World;
 
 /**
@@ -23,8 +20,13 @@ public class GameState extends State {
     }
 
     @Override
-    public void run() {
+    public void tick() {
         // TODO: Add Game Processes
+        
+    }
 
+    public void render() {
+        //TODO: Implement Graphic Rendering
+        handler.getWindow().runGame();
     }
 }
