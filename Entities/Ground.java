@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
  * @id 1998544
  */
 public class Ground extends Entity {
-    private int stepSize;
+    private static int INITIAL_STEP_SIZE = 5;
     private int initialX;
 
     /**
@@ -18,7 +18,7 @@ public class Ground extends Entity {
      */
     public Ground() {
         super();
-        this.stepSize = 0;
+        this.xStepSize = 0;
     }
     
     /**
@@ -33,6 +33,7 @@ public class Ground extends Entity {
         super(sprite, true, handler);
         super.setX(x);
         super.setY(y);
+        this.xStepSize = INITIAL_STEP_SIZE;
         this.initialX = x;
     }
 
@@ -40,22 +41,22 @@ public class Ground extends Entity {
      * Increments the x coordinate of the ground by the stepSize.
      */
     public void step() {
-        super.setX(super.getX() + stepSize);
+        super.setX(super.getX() + xStepSize);
     }
 
     //Getters and Setters
     public void setStepSize(int stepSize) {
-        this.stepSize = stepSize;
+        this.xStepSize = stepSize;
     }
 
     
     @Override
     public void stepX() {
-        if (x == 0) {
+        if (x <= initialX - super.xSize) {
             x = initialX;
-            x = (x - 5) % xSize;
+            x -= xStepSize;
         } else {
-            x = (x - 5) % xSize;
+            x -= xStepSize;
         }
     }
 
@@ -63,5 +64,9 @@ public class Ground extends Entity {
     public void stepY() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'stepY'");
+    }
+
+    public static int getInitialStepSize() {
+        return INITIAL_STEP_SIZE;
     }
 }
