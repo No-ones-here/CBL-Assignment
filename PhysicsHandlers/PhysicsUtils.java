@@ -23,14 +23,13 @@ public class PhysicsUtils {
      * @return whether a collision has occurred or not.
      */
     public boolean checkCollisionX(Entity movingEntity, Entity staticEntity) {
-        if (((staticEntity.getX() 
-            - (movingEntity.getX() + movingEntity.getxSize() + movingEntity.getXStepSize())) < 0) 
-            || (((staticEntity.getX() + staticEntity.getxSize()) 
-            - (movingEntity.getX() + movingEntity.getXStepSize())) < 0)) {
-            return true;
-        } else {
-            return false;
+        if (movingEntity.getXStepSize() > 0) { //Moving Right
+            return (staticEntity.getX() - (movingEntity.getX() + movingEntity.getXStepSize())) < 0;
+        } else if (movingEntity.getXStepSize() < 0) { //Moving Left
+            return (movingEntity.getX() - staticEntity.getX() + staticEntity.getXStepSize() < 0);
         }
+
+        return false;
     }
 
     /**

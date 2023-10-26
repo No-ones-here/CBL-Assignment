@@ -3,6 +3,8 @@ package ObstacleHandler;
 import Entities.Obstacle;
 import Launcher.Handler;
 import java.util.LinkedList;
+import java.util.Random;
+import javax.swing.ImageIcon;
 
 /**
  * Handles generation of Obstacles in the world.
@@ -11,24 +13,43 @@ import java.util.LinkedList;
  * @id 1998544
  */
 public class ObstacleList {
-    private LinkedList<Obstacle> obstacles;
-    private int counter;
-    private Handler handler;
 
-    public ObstacleList(Handler handler) {
+    private LinkedList<Obstacle> obstacles;
+    private Handler handler;
+    private ImageIcon sprite;
+
+    public ObstacleList(Handler handler, ImageIcon sprite) {
         obstacles = new LinkedList<Obstacle>();
-        this.counter = 0;
         this.handler = handler;
+        this.sprite = sprite;
     }
 
+    //TODO: Implement Obstacle Generation.
     public void generateObstacles() {
-        //TODO: Temporary Code//////////////////////////////////////////////
-        obstacles.addLast(new Obstacle(0, 0, null, handler));
-        ////////////////////////////////////////////////////////////////////
+        Random rand = new Random();
+
+        if (!(obstacles.isEmpty()) && obstacles.peekFirst().getX() < -sprite.getIconWidth()) {
+            obstacles.removeFirst();
+        }
+        
+        while (obstacles.size() < 5) {
+            obstacles.addLast(new Obstacle(handler.getWidth() + (rand.nextInt(10, 100)),
+                                    250, sprite, handler));
+        }
+    }
+
+    public void stepAll() {
+        for (Obstacle o : obstacles) {
+            o.stepX();
+        }
     }
 
     //Getters and Setters
-    public Obstacle getNextObstacle() {
-        return this.obstacles.removeFirst();
+    public Obstacle getObstacle(int i) {
+        return this.obstacles.get(i);
+    }
+
+    public Obstacle peekNextObstacle() {
+        return this.obstacles.peekFirst();
     }
 }

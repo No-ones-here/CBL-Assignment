@@ -45,6 +45,7 @@ public abstract class Entity {
         this.xSize = sprite.getIconWidth();
         this.ySize = sprite.getIconHeight();
         this.sprite = sprite;
+        this.physUtil = new PhysicsUtils();
         this.yStepSize = PhysicsUtils.GRAVITY;
         this.handler = handler;
     }
@@ -59,6 +60,7 @@ public abstract class Entity {
         this.ySize = sprite.getIconHeight();
         this.sprite = sprite;
         this.collidable = collidable;
+        this.physUtil = new PhysicsUtils();
         this.yStepSize = PhysicsUtils.GRAVITY;
         this.handler = handler;
     }

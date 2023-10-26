@@ -12,8 +12,8 @@ public class Images {
     
     ImageIcon background = new ImageIcon("./bg.jpg");
     ImageIcon road = new ImageIcon("./road.jpg");
-    ImageIcon road2 = new ImageIcon("./road.jpg");
     ImageIcon pilot = new ImageIcon("./daniel.png");
+    ImageIcon obstacle = new ImageIcon("./obstacle.png");
 
     public Images() {
 
@@ -29,5 +29,9 @@ public class Images {
 
     public ImageIcon getpilot() {
         return this.pilot;
+    }
+
+    public ImageIcon getObstacle() {
+        return this.obstacle;
     }
 }

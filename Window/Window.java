@@ -4,6 +4,8 @@ package Window;
 import Launcher.Handler;
 import World.World;
 import java.awt.*;
+import java.util.LinkedList;
+
 import javax.swing.*;
 
 /**
@@ -25,6 +27,9 @@ public class Window {
     //Handler
     Handler handler;
 
+    //JFrame
+    JFrame frame;
+
     // Buttons
     JButton wheelie;
     JButton jump;
@@ -37,6 +42,7 @@ public class Window {
     JLabel roadlabel2; 
     JLabel backgroundlabel;
     JLabel instruction;
+    ImageComponent obs1;
     // JLabel bgmenulabel = new JLabel(anim.getimg().getBgMenu());
     
 
@@ -61,13 +67,15 @@ public class Window {
         world = handler.getWorld();
         anim.setWorld(world);
 
-        JFrame frame = new JFrame("Wheelie it up!");
+        frame = new JFrame("Wheelie it up!");
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
 
 
         // Adding components to the frame
+        
+
         //Player Object 
         pilotlabel = new JLabel(world.getPlayer().getSprite());
         frame.add(pilotlabel);
@@ -97,11 +105,21 @@ public class Window {
         roadlabel2.setLocation(roadlabel2.getWidth(), 200 + world.getBackground().getySize());
         frame.add(roadlabel2);
 
+        //Add Obstacles
+        obs1 = new ImageComponent(world.getObstacle());
+        frame.add(obs1);
+
         // Looping the road
         anim.runAnimation();
 
         frame.getContentPane().setBackground(Color.ORANGE);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    protected void repaint() {
+        frame.repaint();
+        frame.revalidate();
     }
 
     // Getters for buttons
@@ -131,6 +149,7 @@ public class Window {
         return this.backgroundlabel;
     }
 
+    //Getters and Setters
     public void setWorld(World world) {
         this.world = world;
     }
@@ -138,6 +157,7 @@ public class Window {
     public void setHandler(Handler handler) {
         this.handler = handler;
     }
+
 
     // public void runMenu() {
     //     JFrame frame2 = new JFrame("Welcome to OOW", null);

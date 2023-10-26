@@ -30,7 +30,7 @@ public class Animation {
      * 
      */
     public void runAnimation() {
-        Timer timer = new Timer(1, new ActionListener() {
+        Timer timer = new Timer(1000 / 60, new ActionListener() {
             
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,6 +39,8 @@ public class Animation {
                 w.getwheelie().setLocation(600, 350 + world.getBackground().getySize());
                 w.getjump().setLocation(800, 350 + world.getBackground().getySize());
                 w.getpilotlabel().setLocation(50, 175 + world.getBackground().getySize());
+
+                // Render Obstacles
                 
 
                 // Move first road to the left
@@ -48,14 +50,14 @@ public class Animation {
                 // Move second road to the left
                 world.getG2().stepX();
                 w.getroadlabel2().setLocation(world.getG2().getX(), world.getG2().getY());
-            
+                
             }
             
         });
         
 
         timer.start();
-    }
+    }  
 
     public void setWorld(World world) {
         this.world = world;

@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
  * @id 1998544
  */
 public class Ground extends Entity {
-    private static int INITIAL_STEP_SIZE = 5;
     private int initialX;
 
     /**
@@ -28,12 +27,13 @@ public class Ground extends Entity {
      * @param y describes y coordinates of road
      * @param sprite image that represents road on the GUI
      * @param handler object that grants access to variables in Game
+     * @param xStepSize int that describes movement size per tick
      */
-    public Ground(int x, int y, ImageIcon sprite, Handler handler) {
+    public Ground(int x, int y, ImageIcon sprite, Handler handler, int xStepSize) {
         super(sprite, true, handler);
         super.setX(x);
         super.setY(y);
-        this.xStepSize = INITIAL_STEP_SIZE;
+        this.xStepSize = xStepSize;
         this.initialX = x;
     }
 
@@ -64,9 +64,5 @@ public class Ground extends Entity {
     public void stepY() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'stepY'");
-    }
-
-    public static int getInitialStepSize() {
-        return INITIAL_STEP_SIZE;
     }
 }

@@ -15,13 +15,15 @@ import Window.Images;
  * @id 1998544
  */
 public class World {
+    private static final int INITIAL_STEP_SIZE = 5;
+
     private Player player;
     private Ground g1;
     private Ground g2;
     private ObstacleList obsList;
-    private Obstacle nearestObstacle;
     private Background bg;
     private Images images;
+    private Obstacle testObstacle;
     //TODO: Add Images!
 
     /**
@@ -34,14 +36,21 @@ public class World {
         this.images = new Images();
         this.bg = new Background(0, 200, images.getbackground());
         this.player = new Player(50, 250, images.getpilot(), handler);
-        this.g1 = new Ground(0, bg.getY() + bg.getySize(), images.getroad(), handler);
-        this.g2 = new Ground(g1.getxSize(), bg.getY() + bg.getySize(), images.getroad(), handler);
-        this.obsList = new ObstacleList(handler);
+        this.g1 = new Ground(0, bg.getY() + bg.getySize(),
+                            images.getroad(), handler, INITIAL_STEP_SIZE);
+        this.g2 = new Ground(g1.getxSize(), bg.getY() + bg.getySize(),
+                            images.getroad(), handler, INITIAL_STEP_SIZE);
+        this.obsList = new ObstacleList(handler, images.getObstacle());
+        this.testObstacle = new Obstacle(0, 0, images.getObstacle(), handler);
         
     }
 
 
     //Getters
+    public Obstacle getObstacle() {
+        return this.testObstacle;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -54,8 +63,8 @@ public class World {
         return g2;
     }
 
-    public Obstacle getNextObstacle() {
-        return obsList.getNextObstacle();
+    public ObstacleList getObstacleList() {
+        return this.obsList;
     }
 
     public Background getBackground() {
