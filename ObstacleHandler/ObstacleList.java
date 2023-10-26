@@ -17,11 +17,18 @@ public class ObstacleList {
     private LinkedList<Obstacle> obstacles;
     private Handler handler;
     private ImageIcon sprite;
+    private int defaultHeight;
+    private int intitalStepSize;
 
-    public ObstacleList(Handler handler, ImageIcon sprite) {
+    public ObstacleList(Handler handler, ImageIcon sprite,
+                         int defaultHeight, int initalStepSize) {
+
         obstacles = new LinkedList<Obstacle>();
         this.handler = handler;
+        this.defaultHeight = defaultHeight;
+        this.intitalStepSize = - initalStepSize;
         this.sprite = sprite;
+
     }
 
     //TODO: Implement Obstacle Generation.
@@ -33,8 +40,9 @@ public class ObstacleList {
         }
         
         while (obstacles.size() < 5) {
-            obstacles.addLast(new Obstacle(handler.getWidth() + (rand.nextInt(10, 100)),
-                                    250, sprite, handler));
+            obstacles.addLast(new Obstacle((handler.getWidth())
+                            + (rand.nextInt(sprite.getIconWidth() + 700) + sprite.getIconWidth()),
+                            defaultHeight + 10, sprite, handler, intitalStepSize));
         }
     }
 

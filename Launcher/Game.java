@@ -1,5 +1,8 @@
 package Launcher;
 
+import java.awt.Desktop;
+import java.awt.Toolkit;
+
 import InputHandlers.KeyHandler;
 import InputHandlers.MouseHandler;
 import States.GameState;
@@ -33,6 +36,8 @@ public class Game {
      */
     public Game() {
         title = "Wheelie it Up!";
+        width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
         //Handler
         handler = new Handler(this);
@@ -96,6 +101,9 @@ public class Game {
     private void tick() {
         if (State.getCurrentState() == gameState) {
             gameState.tick();
+            if (!getPlaying()) {
+                State.setCurrentState(menuState);
+            }
         } else if (State.getCurrentState() == menuState) { 
             menuState.tick();
         }

@@ -2,7 +2,6 @@ package World;
 
 import Entities.Background;
 import Entities.Ground;
-import Entities.Obstacle;
 import Entities.Player;
 import Launcher.Handler;
 import ObstacleHandler.ObstacleList;
@@ -23,7 +22,6 @@ public class World {
     private ObstacleList obsList;
     private Background bg;
     private Images images;
-    private Obstacle testObstacle;
     //TODO: Add Images!
 
     /**
@@ -35,22 +33,20 @@ public class World {
     public World(Handler handler) {
         this.images = new Images();
         this.bg = new Background(0, 200, images.getbackground());
-        this.player = new Player(50, 250, images.getpilot(), handler);
         this.g1 = new Ground(0, bg.getY() + bg.getySize(),
                             images.getroad(), handler, INITIAL_STEP_SIZE);
         this.g2 = new Ground(g1.getxSize(), bg.getY() + bg.getySize(),
                             images.getroad(), handler, INITIAL_STEP_SIZE);
-        this.obsList = new ObstacleList(handler, images.getObstacle());
-        this.testObstacle = new Obstacle(0, 0, images.getObstacle(), handler);
+        this.player = new Player(50, 0, images.getpilot(), handler);
+        int groundLevel = g1.getY() + (g1.getySize() / 2);
+        this.player.setY(groundLevel - this.player.getySize());
+        this.obsList = new ObstacleList(handler, images.getObstacle(), groundLevel 
+                                        - images.getObstacle().getIconHeight(), INITIAL_STEP_SIZE);
         
     }
 
 
     //Getters
-    public Obstacle getObstacle() {
-        return this.testObstacle;
-    }
-
     public Player getPlayer() {
         return player;
     }

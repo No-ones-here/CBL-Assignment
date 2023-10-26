@@ -35,6 +35,10 @@ public class GameState extends State {
         //Update Obstacle Variables
         world.getObstacleList().stepAll();
 
+        //Update Variables
+        world.getG1().stepX();
+        world.getG2().stepX();
+
         //Increasing Speed of Road as Game Progresses.
         counter++;
         if (counter >= incrementInterval) {

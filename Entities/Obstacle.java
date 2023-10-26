@@ -9,10 +9,12 @@ public class Obstacle extends Entity{
         super();
     }
 
-    public Obstacle(int initialX, int initialY, ImageIcon sprite, Handler handler) {
+    public Obstacle(int initialX, int initialY, ImageIcon sprite,
+                     Handler handler, int xStepSize) {
         super(sprite, true, handler);
         super.setX(initialX);
         super.setY(initialY);
+        super.xStepSize = xStepSize;
     }
 
     @Override
@@ -20,9 +22,7 @@ public class Obstacle extends Entity{
         if (!super.getPhysicsUtils().checkCollisionX(this, handler.getWorld().getPlayer())) {
             setX(getX() + getXStepSize());
         } else {
-            //TODO: Temporary Code////////
-            System.out.printf("Collision on %d . GAME OVER!", (getX() + getxSize()));
-            //////////////////////////////
+            handler.getWindow().generateGameOver();
             handler.setPlaying(false);
         }
     }

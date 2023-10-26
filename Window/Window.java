@@ -42,7 +42,16 @@ public class Window {
     JLabel roadlabel2; 
     JLabel backgroundlabel;
     JLabel instruction;
-    ImageComponent obs1;
+    JLabel obs1;
+    JLabel obs2;
+    JLabel obs3;
+    JLabel obs4;
+    JLabel obs5;
+    JLabel obs6;
+    JLabel obs7;
+    JLabel obs8;
+    JLabel obs9;
+    JLabel obs10;
     // JLabel bgmenulabel = new JLabel(anim.getimg().getBgMenu());
     
 
@@ -68,9 +77,9 @@ public class Window {
         anim.setWorld(world);
 
         frame = new JFrame("Wheelie it up!");
-        frame.setSize(800, 600);
+        frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout());
+        frame.setLayout(null);
 
 
         // Adding components to the frame
@@ -78,6 +87,8 @@ public class Window {
 
         //Player Object 
         pilotlabel = new JLabel(world.getPlayer().getSprite());
+        pilotlabel.setBounds(world.getPlayer().getX(), world.getPlayer().getY(),
+                            world.getPlayer().getxSize(), world.getPlayer().getySize());
         frame.add(pilotlabel);
 
         //Instructions
@@ -94,19 +105,63 @@ public class Window {
 
         //Background
         backgroundlabel = new JLabel(world.getBackground().getSprite());
+        backgroundlabel.setBounds(world.getBackground().getX(), world.getBackground().getY(),
+                                world.getBackground().getxSize(), world.getBackground().getySize());
         frame.add(backgroundlabel);
 
         //First instance of road
         roadlabel  = new JLabel(world.getG1().getSprite());
+        roadlabel.setBounds(world.getG1().getX(), world.getG1().getY(), 
+                            world.getG1().getxSize(), world.getG1().getySize());
         frame.add(roadlabel);
 
         //Second instance of road
         roadlabel2 = new JLabel(world.getG2().getSprite());
+        roadlabel2.setBounds(world.getG2().getX(), world.getG2().getY(),
+                            world.getG2().getxSize(), world.getG2().getySize());
         frame.add(roadlabel2);
 
         //Add Obstacles
-        obs1 = new ImageComponent(world.getObstacle());
+        obs1 = new JLabel(world.getObstacleList().getObstacle(0).getSprite());
+        obs1.setBounds(world.getObstacleList().getObstacle(0).getX(),
+                        world.getObstacleList().getObstacle(0).getY(),
+                        world.getObstacleList().getObstacle(0).getxSize(),
+                        world.getObstacleList().getObstacle(0).getySize());
         frame.add(obs1);
+        frame.getContentPane().setComponentZOrder(obs1, 3);
+
+        obs2 = new JLabel(world.getObstacleList().getObstacle(1).getSprite());
+        obs2.setBounds(world.getObstacleList().getObstacle(1).getX(),
+                        world.getObstacleList().getObstacle(1).getY(),
+                        world.getObstacleList().getObstacle(1).getxSize(),
+                        world.getObstacleList().getObstacle(1).getySize());
+        frame.add(obs2);
+        frame.getContentPane().setComponentZOrder(obs2, 3);
+
+        obs3 = new JLabel(world.getObstacleList().getObstacle(2).getSprite());
+        obs3.setBounds(world.getObstacleList().getObstacle(2).getX(),
+                        world.getObstacleList().getObstacle(2).getY(),
+                        world.getObstacleList().getObstacle(2).getxSize(),
+                        world.getObstacleList().getObstacle(2).getySize());
+        frame.add(obs3);
+        frame.getContentPane().setComponentZOrder(obs3, 3);
+        
+        obs4 = new JLabel(world.getObstacleList().getObstacle(3).getSprite());
+        obs4.setBounds(world.getObstacleList().getObstacle(3).getX(),
+                        world.getObstacleList().getObstacle(3).getY(),
+                        world.getObstacleList().getObstacle(3).getxSize(),
+                        world.getObstacleList().getObstacle(3).getySize());
+        frame.add(obs4);
+        frame.getContentPane().setComponentZOrder(obs4, 3);
+
+        obs5 = new JLabel(world.getObstacleList().getObstacle(4).getSprite());
+        obs5.setBounds(world.getObstacleList().getObstacle(4).getX(),
+                        world.getObstacleList().getObstacle(4).getY(),
+                        world.getObstacleList().getObstacle(4).getxSize(),
+                        world.getObstacleList().getObstacle(4).getySize());
+        frame.add(obs5);
+        frame.getContentPane().setComponentZOrder(obs5, 3);
+
 
         // Looping the road
         anim.runAnimation();
@@ -116,9 +171,13 @@ public class Window {
         frame.setVisible(true);
     }
 
-    protected void repaint() {
+    public void repaint() {
         frame.repaint();
         frame.revalidate();
+    }
+
+    public void generateGameOver() {
+        JOptionPane.showMessageDialog(null, "GAME OVER!!");
     }
 
     // Getters for buttons
@@ -146,6 +205,24 @@ public class Window {
 
     public JLabel getbackgroundlabel() {
         return this.backgroundlabel;
+    }
+
+    public JLabel getObstacle(int i) {
+        switch(i) {
+            case 0:
+                return this.obs1;
+            case 1:
+                return this.obs2;
+            case 2:
+                return this.obs3;
+            case 3:
+                return this.obs4;
+            case 4:
+                return this.obs5;
+            default:
+                System.out.println("Get Obstacle Error");
+                return null;
+        }
     }
 
     //Getters and Setters

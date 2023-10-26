@@ -24,9 +24,9 @@ public class PhysicsUtils {
      */
     public boolean checkCollisionX(Entity movingEntity, Entity staticEntity) {
         if (movingEntity.getXStepSize() > 0) { //Moving Right
-            return (staticEntity.getX() - (movingEntity.getX() + movingEntity.getXStepSize())) < 0;
+            return (staticEntity.getX() - (movingEntity.getX() + movingEntity.getxSize()) <= 0);
         } else if (movingEntity.getXStepSize() < 0) { //Moving Left
-            return (movingEntity.getX() - staticEntity.getX() + staticEntity.getXStepSize() < 0);
+            return (movingEntity.getX() - (staticEntity.getX() + staticEntity.getxSize()) <= 0);
         }
 
         return false;

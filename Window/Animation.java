@@ -34,23 +34,42 @@ public class Animation {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                w.getbackgroundlabel().setLocation(world.getBackground().getX(),
-                                                    world.getBackground().getY());
                 w.getwheelie().setLocation(600, 350 + world.getBackground().getySize());
                 w.getjump().setLocation(800, 350 + world.getBackground().getySize());
-                w.getpilotlabel().setLocation(50, 175 + world.getBackground().getySize());
 
-                // Render Obstacles
+                //Render Obstacle
+                w.getObstacle(0).setBounds(world.getObstacleList().getObstacle(0).getX(),
+                                        world.getObstacleList().getObstacle(0).getY(),
+                                        world.getObstacleList().getObstacle(0).getxSize(),
+                                        world.getObstacleList().getObstacle(0).getySize());
                 
+                w.getObstacle(1).setBounds(world.getObstacleList().getObstacle(1).getX(),
+                                        world.getObstacleList().getObstacle(1).getY(),
+                                        world.getObstacleList().getObstacle(1).getxSize(),
+                                        world.getObstacleList().getObstacle(1).getySize());
+
+                w.getObstacle(2).setBounds(world.getObstacleList().getObstacle(2).getX(),
+                                        world.getObstacleList().getObstacle(2).getY(),
+                                        world.getObstacleList().getObstacle(2).getxSize(),
+                                        world.getObstacleList().getObstacle(2).getySize());
+
+                w.getObstacle(3).setBounds(world.getObstacleList().getObstacle(3).getX(),
+                                        world.getObstacleList().getObstacle(3).getY(),
+                                        world.getObstacleList().getObstacle(3).getxSize(),
+                                        world.getObstacleList().getObstacle(3).getySize());
+                
+                w.getObstacle(4).setBounds(world.getObstacleList().getObstacle(4).getX(),
+                                        world.getObstacleList().getObstacle(4).getY(),
+                                        world.getObstacleList().getObstacle(4).getxSize(),
+                                        world.getObstacleList().getObstacle(4).getySize());
 
                 // Move first road to the left
-                world.getG1().stepX();
                 w.getroadlabel().setLocation(world.getG1().getX(), world.getG1().getY());
                 
                 // Move second road to the left
-                world.getG2().stepX();
                 w.getroadlabel2().setLocation(world.getG2().getX(), world.getG2().getY());
                 
+                w.repaint();
             }
             
         });
