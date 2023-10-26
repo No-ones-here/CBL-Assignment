@@ -4,7 +4,6 @@ import Launcher.Handler;
 import javax.swing.ImageIcon;
 
 public class Obstacle extends Entity{
-    private int stepSize;
 
     public Obstacle() {
         super();
@@ -16,13 +15,6 @@ public class Obstacle extends Entity{
         super.setY(initialY);
     }
 
-    /**
-     * Increments the x coordinate of the Obstacle by the stepSize.
-     */
-    public void step() {
-        super.setX(super.getX() + stepSize);
-    }
-
     @Override
     public void stepX() {
         if (!super.getPhysicsUtils().checkCollisionX(this, handler.getWorld().getPlayer())) {
@@ -31,6 +23,7 @@ public class Obstacle extends Entity{
             //TODO: Temporary Code////////
             System.out.printf("Collision on %d . GAME OVER!", (getX() + getxSize()));
             //////////////////////////////
+            handler.setPlaying(false);
         }
     }
 

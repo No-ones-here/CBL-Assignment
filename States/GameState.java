@@ -28,6 +28,13 @@ public class GameState extends State {
     @Override
     public void tick() {
         // TODO: Add Game Processes
+
+        //Generate Obstacles
+        world.getObstacleList().generateObstacles();
+
+        //Update Obstacle Variables
+        world.getObstacleList().stepAll();
+
         //Increasing Speed of Road as Game Progresses.
         counter++;
         if (counter >= incrementInterval) {
@@ -43,6 +50,13 @@ public class GameState extends State {
     public void render() {
         //TODO: Implement Graphic Rendering
         handler.getWindow().runGame();
+    }
+
+    public void start() {
+        playing = true;
+
+        //Generate Initial Obstacles
+        world.getObstacleList().generateObstacles();
     }
 
     //Setters and Getters

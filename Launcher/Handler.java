@@ -22,25 +22,40 @@ public class Handler {
     public int getWidth() {
         return game.getWidth();
     }
+
     public int getHeight() {
         return game.getHeight();
     }
+
     public Window getWindow() {
         return game.getWindow();
     }
+
     public KeyHandler getKeyHandler() {
         return game.getkH();
     }
+
     public MouseHandler getMouseHandler() {
         return game.getmH();
     }
+
     public void setState(int i) {
         game.setState(i);
     }
+
     public World getWorld() {
         return game.getWorld();
     }
+
     public void setWorld(World world) {
         game.setWorld(world);
+    }
+
+    public boolean getPlaying() {
+        return game.getPlaying();
+    }
+
+    public void setPlaying(boolean playing) {
+        game.setPlaying(playing);
     }
 }

@@ -55,6 +55,8 @@ public class Game {
         if (State.getCurrentState() == null) {
             State.setCurrentState(gameState);
         }
+        
+        State.getCurrentState().start();
 
         State.getCurrentState().render();
 
@@ -120,6 +122,7 @@ public class Game {
     public World getWorld() {
         return this.world;
     }
+
     public void setWorld(World world) {
         this.world = world;
     }
@@ -134,6 +137,14 @@ public class Game {
 
     public Handler getHandler() {
         return handler;
+    }
+
+    public boolean getPlaying() {
+        return gameState.getPlaying();
+    }
+
+    public void setPlaying(boolean playing) {
+        this.gameState.setPlaying(playing);
     }
 
     /**

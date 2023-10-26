@@ -21,4 +21,6 @@ public abstract class State {
     public abstract void tick();
     
     public abstract void render();
+
+    public abstract void start();
 }
