@@ -45,7 +45,9 @@ public class Game {
         //GUIs
         window = new Window(width, height, title);
         mH = new MouseHandler(handler);
-        kH = new KeyHandler(handler);
+        kH = new KeyHandler();
+
+        window.addKeyListener(kH);
 
         //States
         gameState = new GameState(handler);
@@ -99,6 +101,8 @@ public class Game {
         
 
     private void tick() {
+        kH.tick();
+
         if (State.getCurrentState() == gameState) {
             gameState.tick();
             if (!getPlaying()) {

@@ -45,6 +45,15 @@ public class World {
         
     }
 
+    public void tick() {
+        
+        obsList.stepAll();
+
+        player.tick();
+        
+        g1.stepX();
+        g2.stepX();
+    }
 
     //Getters
     public Player getPlayer() {

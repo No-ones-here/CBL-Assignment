@@ -2,7 +2,7 @@ package InputHandlers;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import Launcher.Handler;
+
 /**
  * Handles Keyboard Inputs in the game.
  * 
@@ -11,26 +11,43 @@ import Launcher.Handler;
  */
 public class KeyHandler implements KeyListener{
     //TODO: Implement Unimplemented Abstract Methods.
-    Handler handler;
+    private boolean[] keys;
+    private boolean jump;
+    private boolean wheelie;
     
-    public KeyHandler(Handler handler) {
-        this.handler = handler;
+    public KeyHandler() {
+        keys = new boolean[256];
+    }
+
+    public void tick() {
+            jump = keys[KeyEvent.VK_SPACE];
+            wheelie = keys[KeyEvent.VK_W];
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == 87) {
-            
-        }
+        keys[e.getKeyCode()] = true;
+        //TODO: TEMPORARY CODE///////////////
+        System.out.println("Pressed");
+        ////////////////////////////////////
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        
+        keys[e.getKeyCode()] = false;
+    }
+
+    //Getters
+    public boolean getJump() {
+        return this.jump;
+    }
+    
+    public boolean getWheelie() {
+        return this.wheelie;
     }
 }

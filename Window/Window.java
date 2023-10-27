@@ -8,6 +8,8 @@ import java.util.LinkedList;
 
 import javax.swing.*;
 
+import InputHandlers.KeyHandler;
+
 /**
  * Class for Handling Swing Components and GUI.
  * 
@@ -67,6 +69,7 @@ public class Window {
         this.height = height;
         this.title = title;
         this.anim = new Animation(this);
+        frame = new JFrame("Wheelie it up!");
     }
 
     /**
@@ -76,14 +79,9 @@ public class Window {
         world = handler.getWorld();
         anim.setWorld(world);
 
-        frame = new JFrame("Wheelie it up!");
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
-
-
-        // Adding components to the frame
-        
 
         //Player Object 
         pilotlabel = new JLabel(world.getPlayer().getSprite());
@@ -93,7 +91,7 @@ public class Window {
 
         //Instructions
         instruction = new JLabel("Press: W to wheelie " + "or J to jump");
-        frame.add(instruction, BorderLayout.NORTH);
+        frame.add(instruction);
 
         //Wheelie Button
         wheelie = new JButton("Wheelie", null);
@@ -234,6 +232,9 @@ public class Window {
         this.handler = handler;
     }
 
+    public void addKeyListener(KeyHandler keyListener) {
+        frame.addKeyListener(keyListener);
+    }
 
     // public void runMenu() {
     //     JFrame frame2 = new JFrame("Welcome to OOW", null);

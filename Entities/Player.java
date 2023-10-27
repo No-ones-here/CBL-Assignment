@@ -24,9 +24,25 @@ public class Player extends Entity{
         super.xStepSize = 0;
         super.yStepSize = 0;
     }
+    
+    public void tick(){
+        if (handler.getKeyHandler().getJump()) {
+            jump();
+            //TODO: TEMPORARY CODE//////////
+            System.out.println("JUMPED");
+            //////////////////////////////
+        }
+        if (handler.getKeyHandler().getWheelie()) {
+            wheelieState = true;
+            //TODO: TEMPORARY CODE////////////
+            System.out.println("Wheelied");
+        }
+
+        stepY();
+    }
 
     public void jump() {
-        yStepSize = 30;
+        yStepSize = 100;
     }
 
     @Override
@@ -44,7 +60,7 @@ public class Player extends Entity{
             
         } else {
             //TODO: Temporary Code////////
-            System.out.printf("Collision on %d", (getY() + getySize()));
+            // System.out.printf("Collision on %d", (getY() + getySize()));
             //////////////////////////////
         }
     }
