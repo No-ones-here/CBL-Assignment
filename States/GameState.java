@@ -1,5 +1,7 @@
 package States;
-import Entities.*;
+
+import Launcher.Handler;
+import World.World;
 
 /**
  * Handles Events while the game is running.
@@ -7,16 +9,24 @@ import Entities.*;
  * @author Luis Santos
  * @id 1998544
  */
-public class GameState extends State{
-    private Player player;
+public class GameState extends State {
+    private Handler handler;
+    private World world;
 
-    public GameState() {
-        
+    public GameState(Handler handler) {
+        this.handler = handler;
+        this.world = new World(handler);
+        handler.setWorld(world);
     }
 
     @Override
-    public void run() {
+    public void tick() {
         // TODO: Add Game Processes
+        
     }
-    
+
+    public void render() {
+        //TODO: Implement Graphic Rendering
+        handler.getWindow().runGame();
+    }
 }

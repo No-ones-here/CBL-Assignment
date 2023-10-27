@@ -1,9 +1,15 @@
 package PhysicsHandlers;
 
-import Entities.*;
+import Entities.Entity;
 
+/**
+ * Contains methods that handle physics events such as collisions.
+ * 
+ * @author Luis Santos
+ * @id 1998544
+ */
 public class PhysicsUtils {
-    private static final int GRAVITY = 10;
+    public static final int GRAVITY = -10;
     
     public PhysicsUtils() {
         
@@ -12,14 +18,15 @@ public class PhysicsUtils {
     /**
      * Checks for collisions between a moving and static entity along the x axis.
      * 
-     * @param movingEntity
-     * @param staticEntity
+     * @param movingEntity object that is moving
+     * @param staticEntity object that may be collided into
      * @return whether a collision has occurred or not.
      */
     public boolean checkCollisionX(Entity movingEntity, Entity staticEntity) {
-        if (staticEntity.getX() - (movingEntity.getX() + movingEntity.getxSize() + movingEntity.getXStepSize()) < 0) {         //Check approach from left     
-            return true;
-        } else if ((staticEntity.getX() + staticEntity.getxSize()) - (movingEntity.getX() + movingEntity.getXStepSize()) < 0) {    //Check approach from right
+        if (((staticEntity.getX() 
+            - (movingEntity.getX() + movingEntity.getxSize() + movingEntity.getXStepSize())) < 0) 
+            || (((staticEntity.getX() + staticEntity.getxSize()) 
+            - (movingEntity.getX() + movingEntity.getXStepSize())) < 0)) {
             return true;
         } else {
             return false;
@@ -29,8 +36,8 @@ public class PhysicsUtils {
     /**
      * Checks for collisions between a moving and a static entity along the y axis.
      * 
-     * @param movingEntity
-     * @param staticEntity
+     * @param movingEntity object that is moving
+     * @param staticEntity object that may be collided into
      * @return whether a collision has occurred or not.
      */
     public boolean checkCollisionY(Entity movingEntity, Entity staticEntity) {

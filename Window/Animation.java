@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 
 public class Animation {
-    Window w = new Window();
+    Window w;
     Images img = new Images();
 
     // Getter for img
@@ -14,8 +14,8 @@ public class Animation {
         return this.img;
     }
 
-    public Animation() {
-        
+    public Animation(Window win) {
+        this.w = win;
     }
     
     public void runAnimation() {
@@ -39,10 +39,10 @@ public class Animation {
                 // If the second road goes off the window
                 if (roadx2 == 0) {    //start again from the original position
                     roadx2 = img.getroad().getIconWidth();                       
-                    roadx2 = (roadx2 - 5) % img.getroad2().getIconWidth();                     
+                    roadx2 = (roadx2 - 5) % img.getroad().getIconWidth();                     
                     w.getroadlabel2().setLocation(roadx2, 200 + img.getbackground().getIconHeight());           
                 } else if (roadx2 > 0) {
-                    roadx2 = (roadx2 - 5) % img.getroad2().getIconWidth();
+                    roadx2 = (roadx2 - 5) % img.getroad().getIconWidth();
                     w.getroadlabel2().setLocation(roadx2, 200 + img.getbackground().getIconHeight());
                 }
             
@@ -54,7 +54,7 @@ public class Animation {
         timer.start();
     }
     
-    public static void main(String[] args) {
-        new Animation().runAnimation();
-    }
+    // public static void main(String[] args) {
+    //     new Animation().runAnimation();
+    // }
 }

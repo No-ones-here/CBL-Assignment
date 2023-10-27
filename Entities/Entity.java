@@ -1,34 +1,75 @@
 package Entities;
 
+import Launcher.Handler;
+import PhysicsHandlers.PhysicsUtils;
 import javax.swing.ImageIcon;
+
 /**
  * Abstract Object that describes an Entity in the Game.
  * 
  * @author Luis Santos
  * @id 1998544
  */
-public class Entity {
-    private int x;
-    private int y;
-    private int xSize;
-    private int ySize;
-    private ImageIcon sprite;
-    private boolean collidable;
+public abstract class Entity {
+    protected int x;
+    protected int y;
+    protected int xSize;
+    protected int ySize;
+    protected int xStepSize;
+    protected int yStepSize;
+    protected Handler handler;
+    protected PhysicsUtils physUtil;
+    protected ImageIcon sprite;
+    protected boolean collidable;
 
+    // public Entity() {
+    //     this(null, false);
+    // }
+
+    //TODO:Temporary Code////////////
     public Entity() {
-        this(0, 0, null, false);
+        this.x = 0;
+        this.y = 0;
+        this.xSize = 0;
+        this.ySize = 0;
+        this.xStepSize = 0;
+        this.yStepSize = 0;
+    }
+    /////////////////////////////////
+
+    /**
+     * Constructor method that initializes the variables in the class.
+     * @param sprite Image object that represents the entity in the GUI.
+     */
+    public Entity(ImageIcon sprite, Handler handler) {
+        this.xSize = sprite.getIconWidth();
+        this.ySize = sprite.getIconHeight();
+        this.sprite = sprite;
+        this.yStepSize = PhysicsUtils.GRAVITY;
+        this.handler = handler;
     }
 
-    public Entity(int xSize, int ySize, ImageIcon sprite, boolean collidable) {
-        this.xSize = xSize;
-        this.ySize = ySize;
+    /**
+     * Constructor method that initializes the variables in the class.
+     * @param sprite Image object that represents the entity in the GUI.
+     * @param collidable Shows whether the object can be collided with.
+     */
+    public Entity(ImageIcon sprite, boolean collidable, Handler handler) {
+        this.xSize = sprite.getIconWidth();
+        this.ySize = sprite.getIconHeight();
         this.sprite = sprite;
         this.collidable = collidable;
+        this.yStepSize = PhysicsUtils.GRAVITY;
+        this.handler = handler;
     }
+
+    public abstract void stepX();
+
+    public abstract void stepY();
 
     @Override
     public String toString() {
-        return String.format("x: %d \ny: %d \n xSize: %d \n ySize: %d", x, y, xSize, ySize);
+        return String.format("x: %d \ny: %d \nxSize: %d \nySize: %d", x, y, xSize, ySize);
     }
 
     //Getters and Setters
@@ -56,12 +97,25 @@ public class Entity {
         return ySize;
     }
 
+    public int getXStepSize() {
+        return this.xStepSize;
+    }
+    
+    public int getYStepSize() {
+        return this.yStepSize;
+    }
+
     public ImageIcon getSprite() {
         return sprite;
     }
+
     protected void setSprite(ImageIcon sprite) {
         this.sprite = sprite;
     } 
+
+    protected PhysicsUtils getPhysicsUtils() {
+        return this.physUtil;
+    }
 
     public boolean collidable() {
         return this.collidable;

@@ -1,8 +1,12 @@
 package Launcher;
 
+import InputHandlers.KeyHandler;
+import InputHandlers.MouseHandler;
+import States.GameState;
+import States.MenuState;
+import States.State;
 import Window.Window;
-import InputHandlers.*;
-import States.*;
+import World.World;
 
 /**
  * Handles games.
@@ -18,30 +22,81 @@ public class Game {
     private Window window;
     private MouseHandler mH;
     private KeyHandler kH;
+    private World world;
     private Handler handler;
     private GameState gameState;
     private MenuState menuState;
+    private boolean running;
     
-    
+    /**
+     * Constructor method that initializes all objects to be used in the game.
+     */
     public Game() {
-        width = 900;
-        height = 900 / 12 * 9;
-        title = "Object-Oriented Wheelies";
-        
+        title = "Wheelie it Up!";
+
+        //Handler
+        handler = new Handler(this);
+
         //GUIs
         window = new Window(width, height, title);
         mH = new MouseHandler(handler);
         kH = new KeyHandler(handler);
 
         //States
-        gameState = new GameState();
-        menuState = new MenuState();
-
-        handler = new Handler(this);
+        gameState = new GameState(handler);
+        menuState = new MenuState(handler);
+        
+        //Set Handler in Window
+        window.setHandler(handler);
     }
 
     public void run() {
-        //TODO: Implement Run Method
+
+        if (State.getCurrentState() == null) {
+            State.setCurrentState(gameState);
+        }
+
+        State.getCurrentState().render();
+
+        double delta = 0;
+        int fps = 60;
+        double timePerTick = 1000000000 / fps;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int ticks = 0;
+        running = true;
+
+        while (running) {
+
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerTick;
+            timer += (now - lastTime);
+            lastTime = now;
+
+            if (delta >= 1) {
+                tick();
+                ticks++;
+                delta--;
+            }
+
+            if (timer >= 1000000000) {
+                System.out.println("Ticks: " + ticks);
+                ticks = 0;
+                timer = 0;
+            }
+
+        }
+        
+    }
+        
+
+    private void tick() {
+        if (State.getCurrentState() == gameState) {
+            gameState.tick();
+        } else if (State.getCurrentState() == menuState) { 
+            menuState.tick();
+        }
     }
 
     
@@ -62,6 +117,13 @@ public class Game {
         return window;
     }
 
+    public World getWorld() {
+        return this.world;
+    }
+    public void setWorld(World world) {
+        this.world = world;
+    }
+
     public MouseHandler getmH() {
         return mH;
     }
@@ -74,17 +136,17 @@ public class Game {
         return handler;
     }
 
+    /**
+     * Method that allows other classes to change the current state of the Game.
+     * @param st integer that represents a state of the Game.
+     */
     public void setState(int st) {
-        switch(st) {
-            case 0:
-                State.setCurrentState(menuState);
-                break;
-            case 1:
-                State.setCurrentState(gameState);
-                break;
-            default:
-                System.out.print("Invalid State Input");
-                break;
+        if (st == 0) {
+            State.setCurrentState(menuState);
+        } else if (st == 1) {
+            State.setCurrentState(gameState);
+        } else {
+            System.out.print("Invalid State Input");
         }
     }
 }

@@ -1,35 +1,99 @@
 package Window;
 
 // Imports
+import Launcher.Handler;
+import World.World;
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-
+/**
+ * Class for Handling Swing Components and GUI.
+ * 
+ */
 public class Window {
+    //Initial Variables
+    int width;
+    int height;
+    String title;
+
+    //Animation
     Animation anim = new Animation(this);
-    
+
+    //World
+    World world;
+
+    //Handler
+    Handler handler;
 
     // Buttons
-    JButton wheelie = new JButton("Wheelie", null);
-    JButton jump = new JButton("jump", null);
+    JButton wheelie;
+    JButton jump;
     JButton startGame = new JButton("START GAME");
     JButton instructions = new JButton("INSTRUCTIONS");
  
     // Labels
-    JLabel pilotlabel = new JLabel(anim.getimg().getPilot());
-    JLabel roadlabel = new JLabel(anim.getimg().getRoad());
-    JLabel roadlabel2 = new JLabel(anim.getimg().getRoad2()); 
-    JLabel backgroundlabel = new JLabel(anim.getimg().getBackground());
-    JLabel instruction = new JLabel("Press: W to wheelie " + "or J to jump");
-    JLabel bgmenulabel = new JLabel(anim.getimg().getBgMenu());
+    JLabel pilotlabel;
+    JLabel roadlabel;
+    JLabel roadlabel2; 
+    JLabel backgroundlabel;
+    JLabel instruction;
+    // JLabel bgmenulabel = new JLabel(anim.getimg().getBgMenu());
     
 
     // Constructor method
-    public Window() {
+    public Window(int width, int height, String title) {
+        this.width = width;
+        this.height = height;
+        this.title = title;
     }
-    
+
+    public void runGame() {
+        world = handler.getWorld();
+
+        JFrame frame = new JFrame("Wheelie it up!");
+        frame.setSize(800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout());
+
+        
+        roadlabel2.setLocation(anim.getimg().getroad().getIconWidth(), 200 + anim.getimg().getbackground().getIconHeight());
+
+        // Looping the road
+        anim.runAnimation();
+       
+        // Adding components to the frame
+        //Player Object 
+        pilotlabel = new JLabel(world.getPlayer().getSprite());
+        frame.add(pilotlabel);
+
+        //Instructions
+        instruction = new JLabel("Press: W to wheelie " + "or J to jump");
+        frame.add(instruction, BorderLayout.NORTH);
+
+        //Wheelie Button
+        wheelie = new JButton("Wheelie", null);
+        frame.add(wheelie);
+
+        //Jump Button
+        jump = new JButton("jump", null);
+        frame.add(jump, BorderLayout.NORTH);
+
+        //Background
+        backgroundlabel = new JLabel(anim.getimg().getbackground());
+        frame.add(backgroundlabel);
+
+        //First instance of road
+        roadlabel  = new JLabel(anim.getimg().getroad());;
+        frame.add(roadlabel);
+
+        //Second instance of road
+        roadlabel2 = new JLabel(anim.getimg().getroad());
+        frame.add(roadlabel2);
+
+        frame.getContentPane().setBackground(Color.ORANGE);
+        frame.setVisible(true);
+    }
+
     // Getters for buttons
     public JButton getwheelie() {
         return this.wheelie;
@@ -56,52 +120,28 @@ public class Window {
     public JLabel getbackgroundlabel() {
         return this.backgroundlabel;
     }
-    
 
+    public void setWorld(World world) {
+        this.world = world;
+    }
 
-    public void runGame() {
-        JFrame frame = new JFrame("Wheelie it up!");
-        frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout());
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
 
+    // public void runMenu() {
+    //     JFrame frame2 = new JFrame("Welcome to OOW", null);
+    //     frame2.setSize(800, 600);
+    //     frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        roadlabel2.setLocation(anim.getimg().getRoad().getIconWidth(), 200 + anim.getimg().getBackground().getIconHeight());
+    //     frame2.add(bgmenulabel);
+    //     frame2.setBackground(Color.ORANGE);
+    //     frame2.setVisible(true);
+    // }
 
-        // Looping the road
-        anim.runAnimation();
-       
-        // Adding components to the frame 
-        frame.add(pilotlabel);
-        frame.add(instruction, BorderLayout.NORTH);
-        frame.add(wheelie);
-        frame.add(jump, BorderLayout.NORTH);
-        frame.add(backgroundlabel);
-        frame.add(roadlabel);
-        frame.add(roadlabel2);
-
-        frame.getContentPane().setBackground(Color.ORANGE);
-        frame.setVisible(true);
-    }
-
-    public void runMenu() {
-        JFrame frame2 = new JFrame("Welocme to OOW", null);
-        frame2.setSize(800, 600);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-
-        // bgmenulabel.setLocation(0, 250);
-
-        // frame2.add(bgmenulabel);
-
-        frame2.setBackground(Color.ORANGE);
-        frame2.setVisible(true);
-
-    }
+    // public static void main(String[] args) {
+    //     new Window().runMenu();
+    // }
 
 
-    
-    public static void main(String[] args) {
-        new Window().runGame();
-    }
 }
