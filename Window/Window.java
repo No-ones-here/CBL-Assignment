@@ -1,14 +1,12 @@
 package Window;
 
 // Imports
+import InputHandlers.KeyHandler;
 import Launcher.Handler;
 import World.World;
 import java.awt.*;
-import java.util.LinkedList;
-
 import javax.swing.*;
 
-import InputHandlers.KeyHandler;
 
 /**
  * Class for Handling Swing Components and GUI.
@@ -49,11 +47,6 @@ public class Window {
     JLabel obs3;
     JLabel obs4;
     JLabel obs5;
-    JLabel obs6;
-    JLabel obs7;
-    JLabel obs8;
-    JLabel obs9;
-    JLabel obs10;
     // JLabel bgmenulabel = new JLabel(anim.getimg().getBgMenu());
     
 
@@ -160,7 +153,6 @@ public class Window {
         frame.add(obs5);
         frame.getContentPane().setComponentZOrder(obs5, 3);
 
-
         // Looping the road
         anim.runAnimation();
 
@@ -224,6 +216,10 @@ public class Window {
     }
 
     //Getters and Setters
+    public JFrame getFrame() {
+        return this.frame;
+    }
+
     public void setWorld(World world) {
         this.world = world;
     }

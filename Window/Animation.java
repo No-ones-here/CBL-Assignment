@@ -36,6 +36,11 @@ public class Animation {
             public void actionPerformed(ActionEvent e) {
                 w.getwheelie().setLocation(600, 350 + world.getBackground().getySize());
                 w.getjump().setLocation(800, 350 + world.getBackground().getySize());
+                w.getFrame().requestFocus();
+
+                //Render Player
+                w.getpilotlabel().setBounds(world.getPlayer().getX(), world.getPlayer().getY(),
+                            world.getPlayer().getxSize(), world.getPlayer().getySize());
 
                 //Render Obstacle
                 w.getObstacle(0).setBounds(world.getObstacleList().getObstacle(0).getX(),
