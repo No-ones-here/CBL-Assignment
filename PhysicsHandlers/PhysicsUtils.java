@@ -24,9 +24,11 @@ public class PhysicsUtils {
      */
     public boolean checkCollisionX(Entity movingEntity, Entity staticEntity) {
         if (movingEntity.getXStepSize() > 0) { //Moving Right
-            return (staticEntity.getX() - (movingEntity.getX() + movingEntity.getxSize()) <= 0);
+            return (staticEntity.getX() - (movingEntity.getX() 
+                    + movingEntity.getxSize() + movingEntity.getXStepSize()) <= 0);
         } else if (movingEntity.getXStepSize() < 0) { //Moving Left
-            return (movingEntity.getX() - (staticEntity.getX() + staticEntity.getxSize()) <= 0);
+            return ((movingEntity.getX() + movingEntity.getXStepSize()) 
+                    - (staticEntity.getX() + staticEntity.getxSize()) <= 0);
         }
 
         return false;
@@ -40,12 +42,14 @@ public class PhysicsUtils {
      * @return whether a collision has occurred or not.
      */
     public boolean checkCollisionY(Entity movingEntity, Entity staticEntity) {
-        if (staticEntity.getY() - (movingEntity.getY() + movingEntity.getySize() + movingEntity.getYStepSize()) < 0) {         //Check approach from top     
-            return true;
-        } else if ((staticEntity.getY() + staticEntity.getySize()) - (movingEntity.getY() + movingEntity.getYStepSize()) < 0) {    //Check approach from bottom
-            return true;
-        } else {
-            return false;
+        if (movingEntity.getYStepSize() > 0) {  //Moving down
+            return (staticEntity.getY() - (movingEntity.getY() 
+                    + movingEntity.getySize() + movingEntity.getYStepSize())) < 0;
+        } else if (movingEntity.getYStepSize() < 0) { //Moving up
+            return ((movingEntity.getY() + movingEntity.getYStepSize()) 
+                    - (staticEntity.getY() + staticEntity.getySize())) < 0;
         }
+
+        return false;
     }
 }
