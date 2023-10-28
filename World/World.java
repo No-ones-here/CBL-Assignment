@@ -40,6 +40,7 @@ public class World {
         this.player = new Player(50, 0, images.getpilot(), handler);
         int groundLevel = g1.getY() + (g1.getySize() / 2);
         this.player.setY(groundLevel - this.player.getySize());
+        this.player.setWSprite(images.getWPilot());
         this.obsList = new ObstacleList(handler, images.getObstacle(), groundLevel 
                                         - images.getObstacle().getIconHeight(), INITIAL_STEP_SIZE);
         

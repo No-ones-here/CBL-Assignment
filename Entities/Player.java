@@ -10,8 +10,9 @@ import javax.swing.ImageIcon;
  * @author Luis Santos
  * @id 1998544
  */
-public class Player extends Entity{
+public class Player extends Entity {
     private boolean wheelieState;
+    private ImageIcon wSprite;
 
     public Player() {
         super();
@@ -32,11 +33,7 @@ public class Player extends Entity{
             System.out.println("JUMPED");
             //////////////////////////////
         }
-        if (handler.getKeyHandler().getWheelie()) {
-            wheelieState = true;
-            //TODO: TEMPORARY CODE////////////
-            System.out.println("Wheelied");
-        }
+        wheelieState = handler.getKeyHandler().getWheelie();
 
         stepY();
     }
@@ -45,6 +42,7 @@ public class Player extends Entity{
         yStepSize = 100;
     }
 
+    
     @Override
     public void stepX() {
         // TODO Auto-generated method stub
@@ -74,5 +72,13 @@ public class Player extends Entity{
 
     public void setWheelieState(boolean wheelieState) {
         this.wheelieState = wheelieState;
-    }    
+    }
+    
+    public void setWSprite(ImageIcon img) {
+        this.wSprite = img;
+    }
+
+    public ImageIcon getWSprite() {
+        return this.wSprite;
+    }
 }
