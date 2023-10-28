@@ -19,19 +19,22 @@ public class GameState extends State {
     private boolean playing;
     private PointsHandler pH;
 
+    /**
+     * Constructor method that initialises all the variables in the Gamestate.
+     * 
+     * @param handler object that allows access to variables in the Game class
+     */
     public GameState(Handler handler) {
         this.handler = handler;
         this.world = new World(handler);
         this.incrementInterval = 60 * 10;
         this.stepMultiplier = 1.25;
-        this.pH = new PointsHandler();
+        this.pH = new PointsHandler(handler);
         handler.setWorld(world);
     }
 
     @Override
     public void tick() {
-        // TODO: Add Game Processes
-
         //Generate Obstacles
         world.getObstacleList().generateObstacles();
 
@@ -58,6 +61,9 @@ public class GameState extends State {
         handler.getWindow().runGame();
     }
 
+    /**
+     * Processes that need to be done before the start of the Swing thread.
+     */
     public void start() {
         playing = true;
 

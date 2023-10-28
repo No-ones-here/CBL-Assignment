@@ -44,6 +44,7 @@ public class Window {
     JLabel backgroundlabel;
     JLabel instruction;
     JLabel pointsLabel;
+    JLabel pointMultiplierLabel;
     JLabel obs1;
     JLabel obs2;
     JLabel obs3;
@@ -99,9 +100,17 @@ public class Window {
         frame.add(jump, BorderLayout.NORTH);
 
         //Points
-        pointsLabel = new JLabel("0");
-        pointsLabel.setBounds(width / 2, 0, 200, 100);
+        pointsLabel = new JLabel("0", SwingConstants.CENTER);
+        pointsLabel.setBounds(width / 2 - 100, 0, 200, 100);
+        pointsLabel.setFont(new Font("Arial", Font.BOLD, 28));
         frame.add(pointsLabel);
+
+        //Points Multiplier
+        pointMultiplierLabel = new JLabel("MULTIPLIER: \n1", SwingConstants.CENTER);
+        pointMultiplierLabel.setBounds(pointsLabel.getX() + pointsLabel.getWidth(),
+                                         pointsLabel.getY(), 300, 100);
+        pointMultiplierLabel.setFont(new Font("Arial", Font.ITALIC, 28));
+        frame.add(pointMultiplierLabel);
 
         //Background
         backgroundlabel = new JLabel(world.getBackground().getSprite());
@@ -170,7 +179,10 @@ public class Window {
         frame.setVisible(true);
     }
 
-    // TODO: If still obselete, remove.
+    /**
+     *TODO: If still obselete, remove. 
+     *
+     */ 
     public void repaint() {
         frame.repaint();
         frame.revalidate();
@@ -205,6 +217,10 @@ public class Window {
 
     public JLabel getbackgroundlabel() {
         return this.backgroundlabel;
+    }
+
+    public JLabel getPointsMultiplierLabel() {
+        return this.pointMultiplierLabel;
     }
 
     /**

@@ -3,8 +3,6 @@ package Window;
 import Launcher.Handler;
 import PointsSystem.PointsHandler;
 import World.World;
-
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -56,6 +54,10 @@ public class Animation {
 
                 //Increment Points
                 w.getPointsLabel().setText(String.valueOf(pH.getPoints()));
+
+                //Check Point Multiplier
+                w.getPointsMultiplierLabel().setText("MULTIPLIER: " 
+                                                    + String.valueOf(pH.getPointMultiplier()));
 
                 //Render Obstacle
                 w.getObstacle(0).setBounds(world.getObstacleList().getObstacle(0).getX(),
