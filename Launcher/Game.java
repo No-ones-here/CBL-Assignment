@@ -1,8 +1,5 @@
 package Launcher;
 
-import java.awt.Desktop;
-import java.awt.Toolkit;
-
 import InputHandlers.KeyHandler;
 import InputHandlers.MouseHandler;
 import States.GameState;
@@ -10,6 +7,7 @@ import States.MenuState;
 import States.State;
 import Window.Window;
 import World.World;
+import java.awt.Toolkit;
 
 /**
  * Handles games.
