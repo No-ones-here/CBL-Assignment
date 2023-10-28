@@ -68,7 +68,7 @@ public class Game {
         State.getCurrentState().render();
 
         double delta = 0;
-        int fps = 60;
+        int fps = 30;
         double timePerTick = 1000000000 / fps;
         long now;
         long lastTime = System.nanoTime();

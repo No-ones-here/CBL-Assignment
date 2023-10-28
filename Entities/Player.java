@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
  */
 public class Player extends Entity{
     private boolean wheelieState;
+    private boolean jumpState;
+    private int jumpCeiling;
 
     public Player() {
         super();
@@ -27,7 +29,8 @@ public class Player extends Entity{
     }
     
     public void tick(){
-        if (handler.getKeyHandler().getJump()) {
+        if (handler.getKeyHandler().getJump() && !jumpState) {
+            jumpState = true;
             jump();
             //TODO: TEMPORARY CODE//////////
             System.out.println("JUMPED");
@@ -53,11 +56,20 @@ public class Player extends Entity{
 
     @Override
     public void stepY() {
-        //GRAVITY
+        // GRAVITY
         if (physUtil.checkCollisionY(this, handler.getWorld().getGroundLevel())) {
+            y = handler.getWorld().getGroundLevel() - ySize;
+            jumpState = false;
             yStepSize = 0;
         } else {
             yStepSize += PhysicsUtils.GRAVITY;
+            setY(getY() + getYStepSize());
+        }
+
+        // Jump Ceiling
+        if (physUtil.checkJumpCollision(this, jumpCeiling)) {
+            yStepSize = 0;
+        } else {
             setY(getY() + getYStepSize());
         }
     }
@@ -72,4 +84,12 @@ public class Player extends Entity{
     public void setWheelieState(boolean wheelieState) {
         this.wheelieState = wheelieState;
     }    
+
+    public int getJumpCeiling() {
+        return this.jumpCeiling;
+    }
+
+    public void setJumpCeiling(int jumpCeiling) {
+        this.jumpCeiling = jumpCeiling;
+    }
 }
