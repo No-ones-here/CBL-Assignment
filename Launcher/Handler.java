@@ -2,6 +2,7 @@ package Launcher;
 
 import InputHandlers.KeyHandler;
 import InputHandlers.MouseHandler;
+import PointsSystem.PointsHandler;
 import Window.Window;
 import World.World;
 
@@ -45,6 +46,10 @@ public class Handler {
 
     public World getWorld() {
         return game.getWorld();
+    }
+
+    public PointsHandler getPointsHandler() {
+        return game.getPointsHandler();
     }
 
     public void setWorld(World world) {

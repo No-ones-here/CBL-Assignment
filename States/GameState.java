@@ -1,6 +1,7 @@
 package States;
 
 import Launcher.Handler;
+import PointsSystem.PointsHandler;
 import World.World;
 
 /**
@@ -16,12 +17,14 @@ public class GameState extends State {
     private int incrementInterval;
     private double stepMultiplier;
     private boolean playing;
+    private PointsHandler pH;
 
     public GameState(Handler handler) {
         this.handler = handler;
         this.world = new World(handler);
         this.incrementInterval = 60 * 10;
         this.stepMultiplier = 1.25;
+        this.pH = new PointsHandler();
         handler.setWorld(world);
     }
 
@@ -32,7 +35,11 @@ public class GameState extends State {
         //Generate Obstacles
         world.getObstacleList().generateObstacles();
 
+        //Update variables of the World.
         world.tick();
+
+        //Update Points System
+        pH.tick();
 
         //Increasing Speed of Road as Game Progresses.
         counter++;
@@ -65,5 +72,9 @@ public class GameState extends State {
     
     public boolean getPlaying() {
         return this.playing;
+    }
+    
+    public PointsHandler getPointsHandler() {
+        return this.pH;
     }
 }

@@ -2,6 +2,7 @@ package Launcher;
 
 import InputHandlers.KeyHandler;
 import InputHandlers.MouseHandler;
+import PointsSystem.PointsHandler;
 import States.GameState;
 import States.MenuState;
 import States.State;
@@ -147,6 +148,10 @@ public class Game {
 
     public Handler getHandler() {
         return handler;
+    }
+
+    public PointsHandler getPointsHandler() {
+        return gameState.getPointsHandler();
     }
 
     public boolean getPlaying() {

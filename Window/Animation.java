@@ -1,9 +1,14 @@
 package Window;
 
+import Launcher.Handler;
+import PointsSystem.PointsHandler;
 import World.World;
+
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
 
 
 
@@ -18,7 +23,9 @@ import javax.swing.*;
  */
 public class Animation {
     Window w;
+    Handler handler;
     World world;
+    PointsHandler pH;
 
     public Animation(Window win) {
         this.w = win;
@@ -46,6 +53,9 @@ public class Animation {
                 } else {
                     w.getpilotlabel().setIcon(world.getPlayer().getSprite());
                 }
+
+                //Increment Points
+                w.getPointsLabel().setText(String.valueOf(pH.getPoints()));
 
                 //Render Obstacle
                 w.getObstacle(0).setBounds(world.getObstacleList().getObstacle(0).getX(),
@@ -94,6 +104,9 @@ public class Animation {
         this.world = world;
     }
     
+    public void setPointsHandler(PointsHandler pH) {
+        this.pH = pH;
+    }
     // public static void main(String[] args) {
     //     new Animation().runAnimation();
     // }

@@ -43,6 +43,7 @@ public class Window {
     JLabel roadlabel2; 
     JLabel backgroundlabel;
     JLabel instruction;
+    JLabel pointsLabel;
     JLabel obs1;
     JLabel obs2;
     JLabel obs3;
@@ -72,6 +73,7 @@ public class Window {
     public void runGame() {
         world = handler.getWorld();
         anim.setWorld(world);
+        anim.setPointsHandler(handler.getPointsHandler());
 
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,7 +86,8 @@ public class Window {
         frame.add(pilotlabel);
 
         //Instructions
-        instruction = new JLabel("Press: W to wheelie " + "or J to jump");
+        instruction = new JLabel("Press: 'W' to wheelie " + "or Space to jump");
+        instruction.setBounds(0, 0, 500, 100);
         frame.add(instruction);
 
         //Wheelie Button
@@ -94,6 +97,11 @@ public class Window {
         //Jump Button
         jump = new JButton("jump", null);
         frame.add(jump, BorderLayout.NORTH);
+
+        //Points
+        pointsLabel = new JLabel("0");
+        pointsLabel.setBounds(width / 2, 0, 200, 100);
+        frame.add(pointsLabel);
 
         //Background
         backgroundlabel = new JLabel(world.getBackground().getSprite());
@@ -162,6 +170,7 @@ public class Window {
         frame.setVisible(true);
     }
 
+    // TODO: If still obselete, remove.
     public void repaint() {
         frame.repaint();
         frame.revalidate();
@@ -198,8 +207,13 @@ public class Window {
         return this.backgroundlabel;
     }
 
+    /**
+     * Gets the JLabel specified by the integer parameter.
+     * 
+     * @param i integer representation of the 5 obstactle labels (int from 1 - 4)
+     */
     public JLabel getObstacle(int i) {
-        switch(i) {
+        switch (i) {
             case 0:
                 return this.obs1;
             case 1:
@@ -214,6 +228,10 @@ public class Window {
                 System.out.println("Get Obstacle Error");
                 return null;
         }
+    }
+    
+    public JLabel getPointsLabel() {
+        return this.pointsLabel;
     }
 
     //Getters and Setters
