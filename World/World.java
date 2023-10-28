@@ -24,7 +24,6 @@ public class World {
     private Images images;
     private int groundLevel;
     private int jumpCeiling;
-    //TODO: Add Images!
 
     /**
      * Constructor method that initializes all instances of the entities
@@ -33,26 +32,43 @@ public class World {
      * @param handler object that allows access to variable in Game.
      */
     public World(Handler handler) {
+        //Image Loader
         this.images = new Images();
+
+        //Background objects
         this.bg = new Background(0, 200, images.getbackground());
         this.g1 = new Ground(0, bg.getY() + bg.getySize(),
                             images.getroad(), handler, INITIAL_STEP_SIZE);
         this.g2 = new Ground(g1.getxSize(), bg.getY() + bg.getySize(),
                             images.getroad(), handler, INITIAL_STEP_SIZE);
-        this.player = new Player(50, 0, images.getpilot(), handler);
+        
+        //Set Ground level relative to the ground object
         groundLevel = g1.getY() + (g1.getySize() / 2);
-        this.player.setY(groundLevel - this.player.getySize());             
+
+        //Initialise Player Variables
+        this.player = new Player(50, groundLevel - images.getpilot().getIconHeight(),
+                                 images.getpilot(), handler);
+        //Set Jump Ceiling relative to the player height
+        jumpCeiling = groundLevel - (player.getySize() * 3);
+        this.player.setJumpCeiling(jumpCeiling);
+
+        //Initialize Obstacle Handlers
         this.obsList = new ObstacleList(handler, images.getObstacle(), groundLevel 
                                         - images.getObstacle().getIconHeight(), INITIAL_STEP_SIZE);
         
     }
 
+    /**
+     * Code that runs every time the timer in the Game class ticks.
+     */
     public void tick() {
-
+        //Update Obstacle Variables
         obsList.tick();
 
+        //Update Player variables
         player.tick();
         
+        //Update Ground Variables
         g1.stepX();
         g2.stepX();
     }
