@@ -12,7 +12,7 @@ import javax.swing.*;
  * 
  * TODO: FILL IN JAVADOC
  * @author Daniele Guggino
- * @id 193...
+ * @id 1933620
  * @author Luis Santos
  * @id 1998544
  */
@@ -41,6 +41,11 @@ public class Animation {
                 //Render Player
                 w.getpilotlabel().setBounds(world.getPlayer().getX(), world.getPlayer().getY(),
                             world.getPlayer().getxSize(), world.getPlayer().getySize());
+                if (world.getPlayer().isWheelieState()) {
+                    w.getpilotlabel().setIcon(world.getPlayer().getWSprite());
+                } else {
+                    w.getpilotlabel().setIcon(world.getPlayer().getSprite());
+                }
 
                 //Render Obstacle
                 w.getObstacle(0).setBounds(world.getObstacleList().getObstacle(0).getX(),
@@ -78,6 +83,8 @@ public class Animation {
             }
             
         });
+
+
         
 
         timer.start();

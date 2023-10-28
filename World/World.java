@@ -51,6 +51,7 @@ public class World {
         //Set Jump Ceiling relative to the player height
         jumpCeiling = groundLevel - (player.getySize() * 3);
         this.player.setJumpCeiling(jumpCeiling);
+        this.player.setWSprite(images.getWPilot());
 
         //Initialize Obstacle Handlers
         this.obsList = new ObstacleList(handler, images.getObstacle(), groundLevel 

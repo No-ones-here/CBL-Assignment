@@ -9,7 +9,8 @@ import java.awt.event.KeyListener;
  * @author Luis Santos
  * @id 1998544
  */
-public class KeyHandler implements KeyListener{
+public class KeyHandler implements KeyListener {
+
     //TODO: Implement Unimplemented Abstract Methods.
     private boolean[] keys;
     private boolean jump;

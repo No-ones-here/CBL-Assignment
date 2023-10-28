@@ -11,8 +11,9 @@ import javax.swing.ImageIcon;
  * @author Luis Santos
  * @id 1998544
  */
-public class Player extends Entity{
+public class Player extends Entity {
     private boolean wheelieState;
+    private ImageIcon wSprite;
     private boolean jumpState;
     private int jumpCeiling;
 
@@ -36,11 +37,8 @@ public class Player extends Entity{
             System.out.println("JUMPED");
             //////////////////////////////
         }
-        if (handler.getKeyHandler().getWheelie()) {
-            wheelieState = true;
-            //TODO: TEMPORARY CODE////////////
-            System.out.println("Wheelied");
-        }
+        wheelieState = handler.getKeyHandler().getWheelie();
+
         stepY();
     }
 
@@ -48,6 +46,7 @@ public class Player extends Entity{
         yStepSize = -20;
     }
 
+    
     @Override
     public void stepX() {
         // TODO Auto-generated method stub
@@ -91,5 +90,13 @@ public class Player extends Entity{
 
     public void setJumpCeiling(int jumpCeiling) {
         this.jumpCeiling = jumpCeiling;
+    }
+    
+    public void setWSprite(ImageIcon img) {
+        this.wSprite = img;
+    }
+
+    public ImageIcon getWSprite() {
+        return this.wSprite;
     }
 }

@@ -38,6 +38,7 @@ public class Window {
  
     // Labels
     JLabel pilotlabel;
+    JLabel wpilotlabel;
     JLabel roadlabel;
     JLabel roadlabel2; 
     JLabel backgroundlabel;

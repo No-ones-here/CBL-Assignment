@@ -13,10 +13,16 @@ public class Images {
     ImageIcon background = new ImageIcon("./bg.jpg");
     ImageIcon road = new ImageIcon("./road.jpg");
     ImageIcon pilot = new ImageIcon("./daniel.png");
+    ImageIcon wpilot = new ImageIcon("./Daniel2.png");
     ImageIcon obstacle = new ImageIcon("./obstacle.png");
+
 
     public Images() {
 
+    }
+
+    public ImageIcon getWPilot() {
+        return this.wpilot;
     }
     
     public ImageIcon getbackground() {
