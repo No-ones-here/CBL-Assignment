@@ -14,7 +14,7 @@ import Window.Images;
  * @id 1998544
  */
 public class World {
-    private static final int INITIAL_STEP_SIZE = 5;
+    private static final int INITIAL_STEP_SIZE = 10;
 
     private Player player;
     private Ground g1;
