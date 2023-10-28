@@ -17,19 +17,35 @@ public class Obstacle extends Entity{
         super.xStepSize = xStepSize;
     }
 
-    @Override
-    public void stepX() {
-        if (!super.getPhysicsUtils().checkCollisionX(this, handler.getWorld().getPlayer())) {
-            setX(getX() + getXStepSize());
-        } else {
+    public void tick() {
+        boolean checkCollisionX = physUtil.checkCollisionX(this, handler.getWorld().getPlayer());
+        boolean checkCollisionY = physUtil.checkCollisionY(handler.getWorld().getPlayer(), this);
+
+        if (!checkCollisionX && checkCollisionY) {
+
+            stepX();
+
+         } else if (checkCollisionX && !checkCollisionY) {
+
+            stepX();
+
+         } else if (checkCollisionX && checkCollisionY) {
+            
             handler.getWindow().generateGameOver();
             handler.setPlaying(false);
+            
+        } else {
+            stepX();
         }
     }
 
     @Override
+    public void stepX() {
+        setX(getX() + getXStepSize());
+    }
+
+    @Override
     public void stepY() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'stepY'");
+        //TODO: EMPTY METHOD
     }
 }

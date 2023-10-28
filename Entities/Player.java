@@ -1,6 +1,7 @@
 package Entities;
 
 import Launcher.Handler;
+import PhysicsHandlers.PhysicsUtils;
 import javax.swing.ImageIcon;
 
 
@@ -18,7 +19,7 @@ public class Player extends Entity{
     }
 
     public Player(int initialX, int initialY, ImageIcon sprite, Handler handler) {
-        super(sprite, true, handler);
+        super(sprite, handler);
         super.setX(initialX);
         super.setY(initialY);
         super.xStepSize = 0;
@@ -37,12 +38,11 @@ public class Player extends Entity{
             //TODO: TEMPORARY CODE////////////
             System.out.println("Wheelied");
         }
-
         stepY();
     }
 
     public void jump() {
-        yStepSize = 100;
+        yStepSize = -20;
     }
 
     @Override
@@ -53,15 +53,12 @@ public class Player extends Entity{
 
     @Override
     public void stepY() {
-        if (!super.getPhysicsUtils().checkCollisionY(this, handler.getWorld().getG1())
-            || !super.getPhysicsUtils().checkCollisionY(this, handler.getWorld().getG2())) {
-
-            setY(getY() + getYStepSize());
-            
+        //GRAVITY
+        if (physUtil.checkCollisionY(this, handler.getWorld().getGroundLevel())) {
+            yStepSize = 0;
         } else {
-            //TODO: Temporary Code////////
-            // System.out.printf("Collision on %d", (getY() + getySize()));
-            //////////////////////////////
+            yStepSize += PhysicsUtils.GRAVITY;
+            setY(getY() + getYStepSize());
         }
     }
     

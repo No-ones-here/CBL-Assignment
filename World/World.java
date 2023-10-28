@@ -22,6 +22,8 @@ public class World {
     private ObstacleList obsList;
     private Background bg;
     private Images images;
+    private int groundLevel;
+    private int jumpCeiling;
     //TODO: Add Images!
 
     /**
@@ -38,16 +40,16 @@ public class World {
         this.g2 = new Ground(g1.getxSize(), bg.getY() + bg.getySize(),
                             images.getroad(), handler, INITIAL_STEP_SIZE);
         this.player = new Player(50, 0, images.getpilot(), handler);
-        int groundLevel = g1.getY() + (g1.getySize() / 2);
-        this.player.setY(groundLevel - this.player.getySize());
+        groundLevel = g1.getY() + (g1.getySize() / 2);
+        this.player.setY(groundLevel - this.player.getySize());             
         this.obsList = new ObstacleList(handler, images.getObstacle(), groundLevel 
                                         - images.getObstacle().getIconHeight(), INITIAL_STEP_SIZE);
         
     }
 
     public void tick() {
-        
-        obsList.stepAll();
+
+        obsList.tick();
 
         player.tick();
         
@@ -76,4 +78,7 @@ public class World {
         return this.bg;
     }
     
+    public int getGroundLevel() {
+        return this.groundLevel;
+    }
 }

@@ -2,6 +2,7 @@ package Entities;
 
 import Launcher.Handler;
 import PhysicsHandlers.PhysicsUtils;
+import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
@@ -17,6 +18,7 @@ public abstract class Entity {
     protected int ySize;
     protected int xStepSize;
     protected int yStepSize;
+    protected Rectangle bounds;
     protected Handler handler;
     protected PhysicsUtils physUtil;
     protected ImageIcon sprite;
@@ -44,6 +46,7 @@ public abstract class Entity {
     public Entity(ImageIcon sprite, Handler handler) {
         this.xSize = sprite.getIconWidth();
         this.ySize = sprite.getIconHeight();
+        this.bounds = new Rectangle(x, y, xSize, ySize);
         this.sprite = sprite;
         this.physUtil = new PhysicsUtils();
         this.yStepSize = PhysicsUtils.GRAVITY;
@@ -59,6 +62,7 @@ public abstract class Entity {
         this.xSize = sprite.getIconWidth();
         this.ySize = sprite.getIconHeight();
         this.sprite = sprite;
+        this.bounds = new Rectangle(x, y, xSize, ySize);
         this.collidable = collidable;
         this.physUtil = new PhysicsUtils();
         this.yStepSize = PhysicsUtils.GRAVITY;
@@ -117,6 +121,10 @@ public abstract class Entity {
 
     protected PhysicsUtils getPhysicsUtils() {
         return this.physUtil;
+    }
+
+    public Rectangle getBounds() {
+        return this.bounds;
     }
 
     public boolean collidable() {
