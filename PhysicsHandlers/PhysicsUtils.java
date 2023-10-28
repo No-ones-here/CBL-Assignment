@@ -9,7 +9,7 @@ import Entities.Entity;
  * @id 1998544
  */
 public class PhysicsUtils {
-    public static final int GRAVITY = 10;
+    public static final int GRAVITY = 5;
     
     public PhysicsUtils() {
         
@@ -79,6 +79,20 @@ public class PhysicsUtils {
         if (e.getYStepSize() >= 0) {  //Moving down
             return (groundLevel - (e.getY() + e.getySize() 
                     + e.getYStepSize())) <= 0;
+        }
+        return false;
+    }
+
+    /**
+     * Checks whether the entity will hit the jump ceiling.
+     * 
+     * @param e entity moving up
+     * @param jumpCeiling y coordinate of the jump ceiling
+     * @return boolean whether the entity hit the jump ceiling
+     */
+    public boolean checkJumpCollision(Entity e, int jumpCeiling) {
+        if (e.getYStepSize() <= 0) {  //Moving up
+            return (e.getY() + e.getYStepSize()) <= jumpCeiling;
         }
         return false;
     }
