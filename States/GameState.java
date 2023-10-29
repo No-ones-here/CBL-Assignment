@@ -41,11 +41,13 @@ public class GameState extends State {
         //Update Points System
         pH.tick();
 
-        //Increasing Speed of Road as Game Progresses.
+        //Increasing Speed of Road and Obstacle as Game Progresses.
         counter++;
         if (counter >= incrementInterval) {
             world.getG1().setStepSize((int) (world.getG1().getXStepSize() * stepMultiplier));
             world.getG2().setStepSize((int) (world.getG2().getXStepSize() * stepMultiplier));
+            world.getObstacleList().setStepSize((int) (world.getObstacleList().getStepSize() 
+                                                        * stepMultiplier));
             counter = 0;
         }
     }
@@ -61,6 +63,7 @@ public class GameState extends State {
      */
     public void start() {
         playing = true;
+        counter = 0;
 
         //Initialize Required Game Varaibles
         this.world = new World(handler);

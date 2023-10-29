@@ -86,6 +86,7 @@ public class ObstacleList {
      */
     public void tick() {
         for (Obstacle o : obstacles) {
+            o.setXStepSize(currentStepSize);
             o.tick();
         }
     }
@@ -97,5 +98,13 @@ public class ObstacleList {
 
     public Obstacle peekNextObstacle() {
         return this.obstacles.peekFirst();
+    }
+
+    public int getStepSize() {
+        return this.currentStepSize;
+    }
+
+    public void setStepSize(int stepSize) {
+        this.currentStepSize = stepSize;
     }
 }
