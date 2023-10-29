@@ -73,8 +73,6 @@ public class Animation {
                 
                 // Move second road to the left
                 w.getroadlabel2().setLocation(world.getG2().getX(), world.getG2().getY());
-                
-                w.repaint();
             }
             
         });

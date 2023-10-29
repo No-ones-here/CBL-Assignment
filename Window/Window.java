@@ -1,6 +1,7 @@
 package Window;
 
 // Imports
+import java.awt.event.MouseListener;
 import InputHandlers.KeyHandler;
 import Launcher.Handler;
 import World.World;
@@ -35,6 +36,7 @@ public class Window {
     JButton jump;
     JButton startGame = new JButton("START GAME");
     JButton instructions = new JButton("INSTRUCTIONS");
+    JButton back;
  
     // Labels
     JLabel pilotlabel;
@@ -47,6 +49,9 @@ public class Window {
     JLabel obs3;
     JLabel obs4;
     JLabel obs5;
+    JLabel bgmLabel;
+    JLabel oow;
+    JTextArea instr;
     // JLabel bgmenulabel = new JLabel(anim.getimg().getBgMenu());
     
 
@@ -63,6 +68,16 @@ public class Window {
         this.title = title;
         this.anim = new Animation(this);
         frame = new JFrame("Wheelie it up!");
+        init();
+    }
+
+    private void init() {
+        frame.setSize(width, height);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.ORANGE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     /**
@@ -72,9 +87,6 @@ public class Window {
         world = handler.getWorld();
         anim.setWorld(world);
 
-        frame.setSize(width, height);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
 
         //Player Object 
         pilotlabel = new JLabel(world.getPlayer().getSprite());
@@ -153,24 +165,89 @@ public class Window {
         frame.add(obs5);
         frame.getContentPane().setComponentZOrder(obs5, 3);
 
+        frame.repaint();
+        frame.revalidate();
+
         // Looping the road
         anim.runAnimation();
 
-        frame.getContentPane().setBackground(Color.ORANGE);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
     }
 
-    public void repaint() {
+    public void mainMenu() {
+
+        bgmLabel = new JLabel(handler.getBackground().getSprite());
+        bgmLabel.setBounds(handler.getBackground().getX(), handler.getBackground().getY(),
+                            handler.getBackground().getxSize(), handler.getBackground().getySize());
+        oow = new JLabel("Object Oriented Wheelies");
+        oow.setBounds(400, 15, 1000, 100);
+        oow.setFont(new Font("West", Font.PLAIN, 60));
+        oow.setForeground(Color.RED);
+        startGame.setBounds(100, 300, 300, 50);
+        startGame.addActionListener(handler.getMouseHandler());
+        startGame.setFont(new Font("Arial", Font.BOLD, 20));
+        instructions.setBounds(100, 375, 300, 35);
+        instructions.addActionListener(handler.getMouseHandler());
+        instructions.setFont(new Font("Arial", Font.BOLD, 15));
+        frame.add(oow);
+        frame.add(startGame);
+        frame.add(instructions);
+        frame.add(bgmLabel);
+        
+
         frame.repaint();
         frame.revalidate();
     }
 
+    public void runInstr() {
+        instr = new JTextArea(" Welcome to OOW! Before taking part of this great adventure make"
+                               + " \n sure you know a couple of tips on how to handle this game." 
+                               + " \n The pilot, or I should perhaps say Daniel, cause that is"
+                               + " \n his name :), is able to wheelie as long as you press 'W',"
+                               + " \n but be careful cause once you release the button he is gonna"
+                               + " \n go back down as a programmer when he realises he forgot the"
+                               + " \n semicolumn ;). So said, have fun!"
+                               + " \n Ohhh don't forget to hit the space bar to jump or you will"
+                               + " \n hate wine more than you will ever doo!!");
+        instr.setBounds(250, 150, 1000, 500);
+        instr.setFont(new Font("Comic sans", Font.CENTER_BASELINE, 30));
+        instr.setBackground(Color.ORANGE);
+
+        back = new JButton("<");
+        back.setBounds(50, 50, 50, 50);
+        back.setFont(new Font("Arial", Font.CENTER_BASELINE, 20));
+        back.addActionListener(handler.getMouseHandler());
+        
+        instr.setEditable(false);
+        frame.getContentPane().removeAll();
+        
+        frame.add(instr);
+        System.out.println("");
+        frame.add(back);
+
+        frame.repaint();
+        frame.revalidate();
+
+    }
+
+   
     public void generateGameOver() {
         JOptionPane.showMessageDialog(null, "GAME OVER!!");
     }
 
+    
+
     // Getters for buttons
+    public JButton getBack() {
+        return this.back;
+    }
+
+    public JButton getInstructions() {
+        return this.instructions;
+    }
+    public JButton getStartGame() {
+        return this.startGame;
+    }
+
     public JButton getwheelie() {
         return this.wheelie;
     }
@@ -213,6 +290,10 @@ public class Window {
                 System.out.println("Get Obstacle Error");
                 return null;
         }
+    }
+
+    public void clearFrame() {
+        frame.getContentPane().removeAll();
     }
 
     //Getters and Setters

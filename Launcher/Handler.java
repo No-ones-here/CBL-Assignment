@@ -1,5 +1,6 @@
 package Launcher;
 
+import Entities.Background;
 import InputHandlers.KeyHandler;
 import InputHandlers.MouseHandler;
 import Window.Window;
@@ -57,5 +58,9 @@ public class Handler {
 
     public void setPlaying(boolean playing) {
         game.setPlaying(playing);
+    }
+
+    public Background getBackground() {
+        return game.getBackground();
     }
 }

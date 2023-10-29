@@ -14,9 +14,14 @@ public class Images {
     ImageIcon road = new ImageIcon("./road.jpg");
     ImageIcon pilot = new ImageIcon("./daniel.png");
     ImageIcon obstacle = new ImageIcon("./obstacle.png");
+    ImageIcon bgm = new ImageIcon("./bgm.jpg");
 
     public Images() {
 
+    }
+
+    public ImageIcon getBgm() {
+        return this.bgm;
     }
     
     public ImageIcon getbackground() {
