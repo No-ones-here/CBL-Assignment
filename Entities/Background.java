@@ -1,6 +1,17 @@
 package Entities;
 
 import javax.swing.ImageIcon;
+/**
+ * Background entity.
+ * @author Daniele Guggino
+ * @id 1933620
+ * 
+ * @author Luis Santos
+ * @id 1998544
+ * 
+ * @date 29/10/2023
+ * 
+ */
 
 public class Background {
     private ImageIcon sprite;
@@ -9,10 +20,12 @@ public class Background {
     private int xSize;
     private int ySize;
 
-    public Background() {
-
-    }
-
+    /**
+     * Background features.
+     * @param x length;
+     * @param y height;
+     * @param sprite image;
+     */
     public Background(int x, int y, ImageIcon sprite) {
         this.sprite = sprite;
         this.x = x;

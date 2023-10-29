@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 
 /**
  * Abstract representation of the ground in the game.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
@@ -62,7 +64,6 @@ public class Ground extends Entity {
 
     @Override
     public void stepY() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'stepY'");
+        // Unnecessary abstract method implementation
     }
 }

@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 
 /**
  * Abstract representation of an Obstacle in the game.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
