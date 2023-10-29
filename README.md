@@ -17,8 +17,7 @@ Daniele Guggino
 
 ## Description
 
-This program is an endless runner game akin to Subway Surfers and other endless runner titles. You play as a motorcycle  
-on a highway avoiding obstacles that are coming at you.
+This program is an endless runner game akin to Subway Surfers and other endless runner titles. You play as a motorcycle on a highway avoiding obstacles that are coming at you.
 
 ## Controls
 
