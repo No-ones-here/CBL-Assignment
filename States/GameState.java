@@ -26,11 +26,8 @@ public class GameState extends State {
      */
     public GameState(Handler handler) {
         this.handler = handler;
-        this.world = new World(handler);
         this.incrementInterval = 60 * 10;
         this.stepMultiplier = 1.25;
-        this.pH = new PointsHandler(handler);
-        handler.setWorld(world);
     }
 
     @Override
@@ -50,22 +47,25 @@ public class GameState extends State {
             world.getG1().setStepSize((int) (world.getG1().getXStepSize() * stepMultiplier));
             world.getG2().setStepSize((int) (world.getG2().getXStepSize() * stepMultiplier));
             counter = 0;
-            //TODO: TEST CODE
-            System.out.println("INCREMENTED!");
         }
     }
 
     @Override
     public void render() {
-        //TODO: Implement Graphic Rendering
         handler.getWindow().runGame();
     }
 
     /**
-     * Processes that need to be done before the start of the Swing thread.
+     * Processes that need to be done at the start of the Game.
+     * Must be called whenever swapping into this state.
      */
     public void start() {
         playing = true;
+
+        //Initialize Required Game Varaibles
+        this.world = new World(handler);
+        this.pH = new PointsHandler(handler);
+        handler.setWorld(world);
 
         //Generate Initial Obstacles
         world.getObstacleList().generateObstacles();
