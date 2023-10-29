@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 
 /**
  * Abstract Object that describes an Entity in the Game.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544

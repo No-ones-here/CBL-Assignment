@@ -1,20 +1,27 @@
 package InputHandlers;
 
-import java.awt.event.MouseListener;
+import Launcher.Handler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Launcher.Handler;
-import States.State;
+
 
 /**
- * Handles Mouse Events
+ * Handles Mouse Events.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class MouseHandler implements ActionListener {
 
     private Handler handler;
+    /**
+     * Constructor method for initializing handler.
+     * @param handler instance of handler;
+     */
 
     public MouseHandler(Handler handler) {
         this.handler = handler;
