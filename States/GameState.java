@@ -6,9 +6,13 @@ import World.World;
 
 /**
  * Handles Events while the game is running.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class GameState extends State {
     private Handler handler;

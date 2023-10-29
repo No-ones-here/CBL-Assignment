@@ -4,9 +4,13 @@ import Entities.Entity;
 
 /**
  * Contains methods that handle physics events such as collisions.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class PhysicsUtils {
     public static final int GRAVITY = 1;

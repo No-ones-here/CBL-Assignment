@@ -1,9 +1,7 @@
 package Launcher;
 
-import java.awt.Desktop;
-import java.awt.Toolkit;
-import Entities.Background;
 
+import Entities.Background;
 import InputHandlers.KeyHandler;
 import InputHandlers.MouseHandler;
 import PointsSystem.PointsHandler;
@@ -12,14 +10,17 @@ import States.MenuState;
 import States.State;
 import Window.Window;
 import World.World;
-import java.awt.Toolkit;
+
 
 /**
  * Handles games.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
  * 
+ * @date 29/10/2023
  */
 public class Game {
     private int width;
@@ -174,6 +175,7 @@ public class Game {
      * Method that allows other classes to change the current state of the Game.
      * @param st integer that represents a state of the Game.
      */
+    
     public void setState(int st) {
         if (st == 0) {
             State.setCurrentState(menuState);

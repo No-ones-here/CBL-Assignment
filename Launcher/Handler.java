@@ -9,9 +9,13 @@ import World.World;
 
 /**
  * Handler through which objects in the Game class are accessed by other classes.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class Handler {
     private static Game game;

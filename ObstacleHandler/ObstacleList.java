@@ -8,9 +8,13 @@ import javax.swing.ImageIcon;
 
 /**
  * Handles generation of Obstacles in the world.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class ObstacleList {
 
