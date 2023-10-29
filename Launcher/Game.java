@@ -1,5 +1,9 @@
 package Launcher;
 
+import java.awt.Desktop;
+import java.awt.Toolkit;
+import Entities.Background;
+
 import InputHandlers.KeyHandler;
 import InputHandlers.MouseHandler;
 import PointsSystem.PointsHandler;
@@ -35,8 +39,8 @@ public class Game {
      */
     public Game() {
         title = "Wheelie it Up!";
-        width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        width = (int) 1920;
+        height = (int) 1080;
 
         //Handler
         handler = new Handler(this);
@@ -59,7 +63,7 @@ public class Game {
     public void run() {
 
         if (State.getCurrentState() == null) {
-            State.setCurrentState(gameState);
+            State.setCurrentState(menuState);
         }
         
         State.getCurrentState().start();
@@ -106,6 +110,7 @@ public class Game {
             gameState.tick();
             if (!getPlaying()) {
                 State.setCurrentState(menuState);
+                menuState.render();
             }
         } else if (State.getCurrentState() == menuState) { 
             menuState.tick();
@@ -162,6 +167,9 @@ public class Game {
         this.gameState.setPlaying(playing);
     }
 
+    public Background getBackground() {
+        return menuState.getBackground();
+    }
     /**
      * Method that allows other classes to change the current state of the Game.
      * @param st integer that represents a state of the Game.
@@ -169,8 +177,10 @@ public class Game {
     public void setState(int st) {
         if (st == 0) {
             State.setCurrentState(menuState);
+            menuState.start();
         } else if (st == 1) {
             State.setCurrentState(gameState);
+            gameState.start();
         } else {
             System.out.print("Invalid State Input");
         }

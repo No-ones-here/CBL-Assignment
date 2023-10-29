@@ -15,10 +15,14 @@ public class Images {
     ImageIcon pilot = new ImageIcon("./daniel.png");
     ImageIcon wpilot = new ImageIcon("./Daniel2.png");
     ImageIcon obstacle = new ImageIcon("./obstacle.png");
-
+    ImageIcon bgm = new ImageIcon("./bgm.jpg");
 
     public Images() {
 
+    }
+
+    public ImageIcon getBgm() {
+        return this.bgm;
     }
 
     public ImageIcon getWPilot() {
