@@ -65,6 +65,7 @@ public class Obstacle extends Entity {
 
     @Override
     public void stepY() {
-        //Open for later use.
+        //Unnecessary Abstract Method Implementation
     }
+
 }
