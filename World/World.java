@@ -9,9 +9,13 @@ import Window.Images;
 
 /**
  * Describes the world that the game takes place.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
  * @author Luis Santos
  * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class World {
     private static final int INITIAL_STEP_SIZE = 10;

@@ -3,10 +3,15 @@ package Window;
 import javax.swing.ImageIcon;
 
 /**
- * Imports Images into the Program
+ * Imports Images into the Program.
  * 
  * @author Daniele Guggino
- * @id 
+ * @id 1933620
+ * 
+ * @author Luis Santos
+ * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class Images {
     

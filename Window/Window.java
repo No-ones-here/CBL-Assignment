@@ -1,7 +1,6 @@
 package Window;
 
 // Imports
-import java.awt.event.MouseListener;
 import InputHandlers.KeyHandler;
 import Launcher.Handler;
 import World.World;
@@ -11,7 +10,13 @@ import javax.swing.*;
 
 /**
  * Class for Handling Swing Components and GUI.
+ * @author Daniele Guggino
+ * @id 1933620
  * 
+ * @author Luis Santos
+ * @id 1998544
+ * 
+ * @date 29/10/2023
  */
 public class Window {
     //Initial Variables
@@ -191,6 +196,9 @@ public class Window {
 
     }
 
+    /**
+     * Running the main menu.
+     */
     public void mainMenu() {
 
         bgmLabel = new JLabel(handler.getBackground().getSprite());
@@ -216,6 +224,9 @@ public class Window {
         frame.revalidate();
     }
 
+    /**
+    * running Instruction page.
+    */
     public void runInstr() {
         instr = new JTextArea(" Welcome to OOW! Before taking part of this great adventure make"
                                + " \n sure you know a couple of tips on how to handle this game." 
@@ -262,6 +273,7 @@ public class Window {
     public JButton getInstructions() {
         return this.instructions;
     }
+    
     public JButton getStartGame() {
         return this.startGame;
     }
@@ -297,10 +309,10 @@ public class Window {
     }
 
     /**
-     * Gets the JLabel specified by the integer parameter.
-     * 
-     * @param i integer representation of the 5 obstactle labels (int from 1 - 4)
-     */
+    * Gets the JLabel specified by the integer parameter.
+    * 
+    * @param i integer representation of the 5 obstactle labels (int from 1 - 4)
+    */
     public JLabel getObstacle(int i) {
         switch (i) {
             case 0:
