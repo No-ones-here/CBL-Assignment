@@ -64,7 +64,8 @@ public class ObstacleList {
 
             //Generate Obstacle in order
             previous = obstacles.getLast();
-            bottomLimit = previous.getX() + previous.getxSize();
+            bottomLimit = previous.getX() + previous.getxSize() 
+                        + (handler.getWorld().getPlayer().getxSize() * 2);
             
             //Check for on-screen bottom limit.
             if (bottomLimit < handler.getWidth()) {
