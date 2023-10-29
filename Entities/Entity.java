@@ -105,9 +105,17 @@ public abstract class Entity {
     public int getXStepSize() {
         return this.xStepSize;
     }
+
+    public void setXStepSize(int xStepSize) {
+        this.xStepSize = xStepSize;
+    }
     
     public int getYStepSize() {
         return this.yStepSize;
+    }
+
+    public void setYStepSize(int yStepSize) {
+        this.yStepSize = yStepSize;
     }
 
     public ImageIcon getSprite() {
