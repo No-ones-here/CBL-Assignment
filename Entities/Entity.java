@@ -24,11 +24,11 @@ public abstract class Entity {
     protected ImageIcon sprite;
     protected boolean collidable;
 
-    // public Entity() {
-    //     this(null, false);
-    // }
 
-    //TODO:Temporary Code////////////
+
+    /**
+     * Default Constructor that initialises all integer variables to 0.
+     */
     public Entity() {
         this.x = 0;
         this.y = 0;
@@ -37,7 +37,6 @@ public abstract class Entity {
         this.xStepSize = 0;
         this.yStepSize = 0;
     }
-    /////////////////////////////////
 
     /**
      * Constructor method that initializes the variables in the class.

@@ -10,8 +10,6 @@ import java.awt.event.KeyListener;
  * @id 1998544
  */
 public class KeyHandler implements KeyListener {
-
-    //TODO: Implement Unimplemented Abstract Methods.
     private boolean[] keys;
     private boolean jump;
     private boolean wheelie;
@@ -20,22 +18,23 @@ public class KeyHandler implements KeyListener {
         keys = new boolean[256];
     }
 
+    /**
+     * Code that is run everytime the game ticks.
+     * Updates the necessary variables per tick.
+     */
     public void tick() {
-            jump = keys[KeyEvent.VK_SPACE];
-            wheelie = keys[KeyEvent.VK_W];
+        jump = keys[KeyEvent.VK_SPACE];
+        wheelie = keys[KeyEvent.VK_W];
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        
+        // Implemented Abstract Method Unnecessary.
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
-        //TODO: TEMPORARY CODE///////////////
-        System.out.println("Pressed");
-        ////////////////////////////////////
     }
 
     @Override

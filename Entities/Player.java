@@ -21,6 +21,14 @@ public class Player extends Entity {
         super();
     }
 
+    /**
+     * Constructor that initialises the variables of the Player objects.
+     * 
+     * @param initialX initial x coordinate
+     * @param initialY initial y coordinate
+     * @param sprite image that represents the player
+     * @param handler object that allows access to variables in Game class
+     */
     public Player(int initialX, int initialY, ImageIcon sprite, Handler handler) {
         super(sprite, handler);
         super.setX(initialX);
@@ -29,13 +37,15 @@ public class Player extends Entity {
         super.yStepSize = 0;
     }
     
-    public void tick(){
+    /**
+     * Code that runs everytime the game ticks.
+     * This checks for a jump and wheelie input and updates the 
+     * variables accordingly.
+     */
+    public void tick() {
         if (handler.getKeyHandler().getJump() && !jumpState) {
             jumpState = true;
             jump();
-            //TODO: TEMPORARY CODE//////////
-            System.out.println("JUMPED");
-            //////////////////////////////
         }
         wheelieState = handler.getKeyHandler().getWheelie();
 
@@ -49,8 +59,7 @@ public class Player extends Entity {
     
     @Override
     public void stepX() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'stepX'");
+        // Unnecessary Implementation of Abstract Method.
     }
 
     @Override
