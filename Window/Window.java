@@ -49,7 +49,6 @@ public class Window {
     JLabel roadlabel;
     JLabel roadlabel2; 
     JLabel backgroundlabel;
-    JLabel instruction;
     JLabel pointsLabel;
     JLabel pointMultiplierLabel;
     JLabel obs1;
@@ -102,11 +101,6 @@ public class Window {
         pilotlabel.setBounds(world.getPlayer().getX(), world.getPlayer().getY(),
                             world.getPlayer().getxSize(), world.getPlayer().getySize());
         frame.add(pilotlabel);
-
-        //Instructions
-        instruction = new JLabel("Press: 'W' to wheelie " + "or Space to jump");
-        instruction.setBounds(0, 0, 500, 100);
-        frame.add(instruction);
 
         //Wheelie Button
         wheelie = new JButton("Wheelie", null);
@@ -355,20 +349,4 @@ public class Window {
     public void addKeyListener(KeyHandler keyListener) {
         frame.addKeyListener(keyListener);
     }
-
-    // public void runMenu() {
-    //     JFrame frame2 = new JFrame("Welcome to OOW", null);
-    //     frame2.setSize(800, 600);
-    //     frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-    //     frame2.add(bgmenulabel);
-    //     frame2.setBackground(Color.ORANGE);
-    //     frame2.setVisible(true);
-    // }
-
-    // public static void main(String[] args) {
-    //     new Window().runMenu();
-    // }
-
-
 }
